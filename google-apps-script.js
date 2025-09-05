@@ -1,8 +1,18 @@
 function doPost(e) {
   try {
+    // Add CORS headers
+    const response = ContentService.createTextOutput();
+    response.setMimeType(ContentService.MimeType.JSON);
+    
+    // Handle CORS preflight request
+    if (e.parameter && e.parameter.method === 'OPTIONS') {
+      return response.setContent(JSON.stringify({status: 'OK'}));
+    }
+    
     if (!e || !e.postData || !e.postData.contents) {
       throw new Error("No POST data received.");
     }
+    
     var sheet = SpreadsheetApp.openById('1cTee8S19dK_Rzj2ZOpPy8iDXh_XohGe5Sym6onEvyrg').getSheetByName('Sheet1');
     var data = JSON.parse(e.postData.contents);
 
@@ -11,8 +21,24 @@ function doPost(e) {
     }
 
     sheet.appendRow([data.name, data.email, data.phone, new Date()]);
-    return ContentService.createTextOutput("Success").setMimeType(ContentService.MimeType.TEXT);
+    
+    return response.setContent(JSON.stringify({
+      status: 'success',
+      message: 'Data saved successfully'
+    }));
+    
   } catch (err) {
-    return ContentService.createTextOutput("Error: " + err.message).setMimeType(ContentService.MimeType.TEXT);
+    return ContentService.createTextOutput(JSON.stringify({
+      status: 'error',
+      message: err.message
+    })).setMimeType(ContentService.MimeType.JSON);
   }
+}
+
+// Add doGet function for CORS
+function doGet(e) {
+  return ContentService.createTextOutput(JSON.stringify({
+    status: 'OK',
+    message: 'Google Apps Script is running'
+  })).setMimeType(ContentService.MimeType.JSON);
 }

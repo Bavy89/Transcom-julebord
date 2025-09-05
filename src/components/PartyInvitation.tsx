@@ -37,18 +37,37 @@ const PartyInvitation = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    try {
-      await fetch(GOOGLE_SCRIPT_URL, {
-        method: "POST",
-        body: JSON.stringify(formData),
-        headers: { "Content-Type": "application/json" }
+    
+    // Validate form data
+    if (!formData.name.trim() || !formData.email.trim() || !formData.phone.trim()) {
+      toast({
+        title: "Missing Information",
+        description: "Please fill in all fields before submitting.",
+        variant: "destructive"
       });
+      return;
+    }
+    
+    try {
+      const response = await fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors", // This bypasses CORS for Google Apps Script
+        body: JSON.stringify(formData),
+        headers: { 
+          "Content-Type": "application/json"
+        }
+      });
+      
+      // With no-cors mode, we can't read the response, so we assume success
+      // if no error is thrown
+      
       toast({
         title: "RSVP Confirmed! 🎉",
         description: `Thanks ${formData.name}! We can't wait to party with you!`,
       });
       setFormData({ name: "", email: "", phone: "" });
     } catch (err) {
+      console.error("RSVP submission error:", err);
       toast({
         title: "RSVP Failed",
         description: "Could not send your RSVP. Please try again.",
