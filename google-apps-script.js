@@ -1,31 +1,23 @@
 function doPost(e) {
   try {
-    // Add CORS headers
-    const response = ContentService.createTextOutput();
-    response.setMimeType(ContentService.MimeType.JSON);
+    // Get the active spreadsheet and sheet
+    var ss = SpreadsheetApp.openById('1cTee8S19dK_Rzj2ZOpPy8iDXh_XohGe5Sym6onEvyrg');
+    var sheet = ss.getActiveSheet();
     
-    // Handle CORS preflight request
-    if (e.parameter && e.parameter.method === 'OPTIONS') {
-      return response.setContent(JSON.stringify({status: 'OK'}));
-    }
-    
-    if (!e || !e.postData || !e.postData.contents) {
-      throw new Error("No POST data received.");
-    }
-    
-    var sheet = SpreadsheetApp.openById('1cTee8S19dK_Rzj2ZOpPy8iDXh_XohGe5Sym6onEvyrg').getSheetByName('Blad1');
+    // Parse the incoming data
     var data = JSON.parse(e.postData.contents);
-
+    
+    // Validate required fields
     if (!data.name || !data.email || !data.phone) {
-      throw new Error("Missing required fields.");
+      throw new Error("Missing required fields: name, email, or phone");
     }
-
+    
     // Add headers if this is the first row
     if (sheet.getLastRow() === 0) {
-      sheet.getRange(1, 1, 1, 8).setValues([['Navn', 'E-post', 'Telefon', 'Har allergier', 'Allergi kommentarer', 'ELogIT', 'Negotia', 'Dato']]);
+      sheet.getRange(1, 1, 1, 8).setValues([['Navn', 'E-post', 'Telefon', 'Har allergier', 'Allergi kommentarer', 'Fagforening ELogIT', 'Fagforening Negotia', 'Dato']]);
     }
     
-    // Add the new row
+    // Add the new row with fagforening (union membership) and allergy information
     sheet.appendRow([
       data.name, 
       data.email, 
@@ -37,15 +29,17 @@ function doPost(e) {
       new Date()
     ]);
     
-    return response.setContent(JSON.stringify({
-      status: 'success',
-      message: 'Data saved successfully'
-    }));
-    
-  } catch (err) {
+    // Return success response
     return ContentService.createTextOutput(JSON.stringify({
-      status: 'error',
-      message: err.message
+      success: true,
+      message: 'Data saved successfully'
+    })).setMimeType(ContentService.MimeType.JSON);
+    
+  } catch (error) {
+    // Return error response
+    return ContentService.createTextOutput(JSON.stringify({
+      success: false,
+      error: error.toString()
     })).setMimeType(ContentService.MimeType.JSON);
   }
 }
