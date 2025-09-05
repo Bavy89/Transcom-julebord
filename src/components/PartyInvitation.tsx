@@ -68,8 +68,8 @@ const PartyInvitation = () => {
       console.log('RSVP data sent successfully');
       
       toast({
-        title: "RSVP Confirmed! 🎉",
-        description: `Thanks ${formData.name}! We can't wait to party with you!`,
+        title: "Wow, takk for at du meldte deg på! 🎉",
+        description: `Vi gleder oss til å se deg på festen, ${formData.name}!`,
       });
       setFormData({ name: "", email: "", phone: "" });
       
