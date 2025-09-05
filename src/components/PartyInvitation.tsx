@@ -49,8 +49,10 @@ const PartyInvitation = () => {
     }
     
     try {
-      const response = await fetch(GOOGLE_SCRIPT_URL, {
+      // Use no-cors mode to avoid CORS issues with Google Apps Script
+      await fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',
+        mode: 'no-cors',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -61,18 +63,16 @@ const PartyInvitation = () => {
         }),
       });
       
-      const data = await response.json();
-      console.log('Suksess:', data);
+      // With no-cors mode, we can't read the response, so we assume success
+      // if no error is thrown during the fetch
+      console.log('RSVP data sent successfully');
       
-      if (data.success) {
-        toast({
-          title: "RSVP Confirmed! 🎉",
-          description: `Thanks ${formData.name}! We can't wait to party with you!`,
-        });
-        setFormData({ name: "", email: "", phone: "" });
-      } else {
-        throw new Error(data.error || "Unknown error");
-      }
+      toast({
+        title: "RSVP Confirmed! 🎉",
+        description: `Thanks ${formData.name}! We can't wait to party with you!`,
+      });
+      setFormData({ name: "", email: "", phone: "" });
+      
     } catch (error) {
       console.error('Feil:', error);
       toast({
