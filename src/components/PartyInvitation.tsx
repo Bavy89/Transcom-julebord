@@ -276,7 +276,7 @@ const RSVPForm = ({
                 <Input
                   name="name"
                   type="text"
-                  placeholder="John Doe"
+                  placeholder="Ditt fantastiske navn"
                   value={formData.name}
                   onChange={handleInputChange}
                   required
@@ -294,7 +294,7 @@ const RSVPForm = ({
                 <Input
                   name="email"
                   type="email"
-                  placeholder="john@example.com"
+                  placeholder="din.epost@transcom.no"
                   value={formData.email}
                   onChange={handleInputChange}
                   required
@@ -312,7 +312,7 @@ const RSVPForm = ({
                 <Input
                   name="phone"
                   type="tel"
-                  placeholder="+1 (555) 123-4567"
+                  placeholder="+47 123 45 678"
                   value={formData.phone}
                   onChange={handleInputChange}
                   required
