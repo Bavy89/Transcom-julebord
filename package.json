@@ -1,8 +1,8 @@
 {
-  "name": "vite_react_shadcn_ts",
-  "_comment": "Updated: Project synced to GitHub $(date)",
+  "name": "transcom-julebord-2025",
+  "description": "Transcom Julebord 2025 - Invitasjonsside",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
