@@ -12,6 +12,9 @@ interface FormData {
   name: string;
   email: string;
   phone: string;
+  hasAllergies: boolean;
+  isELogIT: boolean;
+  isNegotia: boolean;
 }
 
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzCcuKR9Z6Z0IxiHXEgOxJj2kfDJemYH74Inzs_Y_EQQKcBQiJi-gYJbQt3P5QI1dKrVA/exec";
@@ -30,7 +33,10 @@ const PartyInvitation = () => {
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
-    phone: ""
+    phone: "",
+    hasAllergies: false,
+    isELogIT: false,
+    isNegotia: false
   });
 
   const { toast } = useToast();
@@ -41,8 +47,8 @@ const PartyInvitation = () => {
     // Validate form data
     if (!formData.name.trim() || !formData.email.trim() || !formData.phone.trim()) {
       toast({
-        title: "Missing Information",
-        description: "Please fill in all fields before submitting.",
+        title: "Mangler informasjon",
+        description: "Vennligst fyll ut alle påkrevde felt før du sender inn.",
         variant: "destructive"
       });
       return;
@@ -59,7 +65,10 @@ const PartyInvitation = () => {
         body: JSON.stringify({
           name: formData.name,
           email: formData.email,
-          phone: formData.phone
+          phone: formData.phone,
+          hasAllergies: formData.hasAllergies,
+          isELogIT: formData.isELogIT,
+          isNegotia: formData.isNegotia
         }),
       });
       
@@ -71,22 +80,30 @@ const PartyInvitation = () => {
         title: "Wow, takk for at du meldte deg på! 🎉",
         description: `Vi gleder oss til å se deg på festen, ${formData.name}!`,
       });
-      setFormData({ name: "", email: "", phone: "" });
+      setFormData({ 
+        name: "", 
+        email: "", 
+        phone: "", 
+        hasAllergies: false, 
+        isELogIT: false, 
+        isNegotia: false 
+      });
       
     } catch (error) {
       console.error('Feil:', error);
       toast({
-        title: "RSVP Failed",
-        description: "Could not send your RSVP. Please try again.",
+        title: "Påmelding feilet",
+        description: "Kunne ikke sende påmeldingen. Vennligst prøv igjen.",
         variant: "destructive"
       });
     }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value, type, checked } = e.target;
     setFormData(prev => ({
       ...prev,
-      [e.target.name]: e.target.value
+      [name]: type === 'checkbox' ? checked : value
     }));
   };
 
@@ -320,6 +337,72 @@ const RSVPForm = ({
                 />
               </motion.div>
             </div>
+
+            {/* Checkbox section */}
+            <motion.div
+              className="space-y-4"
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.6, duration: 0.8 }}
+            >
+              <h3 className="text-lg font-semibold text-party-blue mb-4">Tilleggsinformasjon</h3>
+              
+              <div className="space-y-3">
+                <motion.div
+                  className="flex items-center space-x-3 p-3 bg-background/30 rounded-lg border border-party-blue/20"
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <input
+                    type="checkbox"
+                    id="hasAllergies"
+                    name="hasAllergies"
+                    checked={formData.hasAllergies}
+                    onChange={handleInputChange}
+                    className="w-4 h-4 text-party-blue bg-background border-party-blue/30 rounded focus:ring-party-blue focus:ring-2"
+                  />
+                  <label htmlFor="hasAllergies" className="text-sm font-medium text-foreground cursor-pointer">
+                    Jeg har matallergier som arrangørene bør vite om
+                  </label>
+                </motion.div>
+
+                <motion.div
+                  className="flex items-center space-x-3 p-3 bg-background/30 rounded-lg border border-party-blue/20"
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <input
+                    type="checkbox"
+                    id="isELogIT"
+                    name="isELogIT"
+                    checked={formData.isELogIT}
+                    onChange={handleInputChange}
+                    className="w-4 h-4 text-party-blue bg-background border-party-blue/30 rounded focus:ring-party-blue focus:ring-2"
+                  />
+                  <label htmlFor="isELogIT" className="text-sm font-medium text-foreground cursor-pointer">
+                    Jeg er medlem av ELogIT
+                  </label>
+                </motion.div>
+
+                <motion.div
+                  className="flex items-center space-x-3 p-3 bg-background/30 rounded-lg border border-party-blue/20"
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <input
+                    type="checkbox"
+                    id="isNegotia"
+                    name="isNegotia"
+                    checked={formData.isNegotia}
+                    onChange={handleInputChange}
+                    className="w-4 h-4 text-party-blue bg-background border-party-blue/30 rounded focus:ring-party-blue focus:ring-2"
+                  />
+                  <label htmlFor="isNegotia" className="text-sm font-medium text-foreground cursor-pointer">
+                    Jeg er medlem av Negotia
+                  </label>
+                </motion.div>
+              </div>
+            </motion.div>
 
             <motion.div
               className="text-center"

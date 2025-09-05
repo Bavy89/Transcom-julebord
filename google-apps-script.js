@@ -20,7 +20,21 @@ function doPost(e) {
       throw new Error("Missing required fields.");
     }
 
-    sheet.appendRow([data.name, data.email, data.phone, new Date()]);
+    // Add headers if this is the first row
+    if (sheet.getLastRow() === 0) {
+      sheet.getRange(1, 1, 1, 7).setValues([['Navn', 'E-post', 'Telefon', 'Matallergier', 'ELogIT', 'Negotia', 'Dato']]);
+    }
+    
+    // Add the new row
+    sheet.appendRow([
+      data.name, 
+      data.email, 
+      data.phone, 
+      data.hasAllergies ? 'Ja' : 'Nei',
+      data.isELogIT ? 'Ja' : 'Nei',
+      data.isNegotia ? 'Ja' : 'Nei',
+      new Date()
+    ]);
     
     return response.setContent(JSON.stringify({
       status: 'success',
