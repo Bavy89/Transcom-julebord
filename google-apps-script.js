@@ -13,7 +13,7 @@ function doPost(e) {
       throw new Error("No POST data received.");
     }
     
-    var sheet = SpreadsheetApp.openById('1cTee8S19dK_Rzj2ZOpPy8iDXh_XohGe5Sym6onEvyrg').getSheetByName('Sheet1');
+    var sheet = SpreadsheetApp.openById('1cTee8S19dK_Rzj2ZOpPy8iDXh_XohGe5Sym6onEvyrg').getSheetByName('Blad1');
     var data = JSON.parse(e.postData.contents);
 
     if (!data.name || !data.email || !data.phone) {
