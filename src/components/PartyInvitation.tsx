@@ -1,4 +1,5 @@
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
+// Updated: Project synced to GitHub $(date)
 import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";

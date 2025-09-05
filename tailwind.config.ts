@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+// Updated: Project synced to GitHub $(date)
 
 export default {
 	darkMode: ["class"],
