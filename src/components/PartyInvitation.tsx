@@ -14,7 +14,7 @@ interface FormData {
   phone: string;
 }
 
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzKdOcSsYLRR4jEO3bPaZnykqlVsD5K9McyANOm7FFki67tcXSHW5x51vKd7AmQpQyeYA/exec";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzCcuKR9Z6Z0IxiHXEgOxJj2kfDJemYH74Inzs_Y_EQQKcBQiJi-gYJbQt3P5QI1dKrVA/exec";
 
 const PartyInvitation = () => {
   const containerRef = useRef<HTMLDivElement>(null);
