@@ -50,32 +50,31 @@ const PartyInvitation = () => {
     
     try {
       const response = await fetch(GOOGLE_SCRIPT_URL, {
-        method: "POST",
-        mode: "cors",
-        body: JSON.stringify(formData),
-        headers: { 
-          "Content-Type": "application/json"
-        }
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone
+        }),
       });
       
-      if (response.ok) {
-        const result = await response.json();
-        console.log("RSVP response:", result);
-        
-        if (result.success) {
-          toast({
-            title: "RSVP Confirmed! 🎉",
-            description: `Thanks ${formData.name}! We can't wait to party with you!`,
-          });
-          setFormData({ name: "", email: "", phone: "" });
-        } else {
-          throw new Error(result.error || "Unknown error");
-        }
+      const data = await response.json();
+      console.log('Suksess:', data);
+      
+      if (data.success) {
+        toast({
+          title: "RSVP Confirmed! 🎉",
+          description: `Thanks ${formData.name}! We can't wait to party with you!`,
+        });
+        setFormData({ name: "", email: "", phone: "" });
       } else {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        throw new Error(data.error || "Unknown error");
       }
-    } catch (err) {
-      console.error("RSVP submission error:", err);
+    } catch (error) {
+      console.error('Feil:', error);
       toast({
         title: "RSVP Failed",
         description: "Could not send your RSVP. Please try again.",
