@@ -21,3 +21,4 @@ npm run build
 
 Push til `main`-branchen på GitHub. Siden kan enkelt hostes på Vercel, Netlify eller GitHub Pages.
 # Updated Fri Sep  5 14:18:06 CEST 2025
+
