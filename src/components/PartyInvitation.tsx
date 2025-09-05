@@ -294,7 +294,7 @@ const RSVPForm = ({
                 <Input
                   name="email"
                   type="email"
-                  placeholder="din.epost@transcom.no"
+                  placeholder="din.epost@transcom.com"
                   value={formData.email}
                   onChange={handleInputChange}
                   required
