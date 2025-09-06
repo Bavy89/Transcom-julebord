@@ -300,7 +300,7 @@ const RSVPForm = ({
                 <Input
                   name="name"
                   type="text"
-                  placeholder="Ditt fantastiske navn"
+                  placeholder="Navn"
                   value={formData.name}
                   onChange={handleInputChange}
                   required
