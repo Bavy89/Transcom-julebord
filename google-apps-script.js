@@ -22,7 +22,7 @@ function doPost(e) {
 
     // Add headers if this is the first row
     if (sheet.getLastRow() === 0) {
-      sheet.getRange(1, 1, 1, 7).setValues([['Navn', 'E-post', 'Telefon', 'Matallergier', 'ELogIT', 'Negotia', 'Dato']]);
+      sheet.getRange(1, 1, 1, 8).setValues([['Navn', 'E-post', 'Telefon', 'Matallergier', 'Allergi-kommentar', 'ELogIT', 'Negotia', 'Dato']]);
     }
     
     // Add the new row
@@ -31,6 +31,7 @@ function doPost(e) {
       data.email, 
       data.phone, 
       data.hasAllergies ? 'Ja' : 'Nei',
+      data.allergyComment || '',
       data.isELogIT ? 'Ja' : 'Nei',
       data.isNegotia ? 'Ja' : 'Nei',
       new Date()

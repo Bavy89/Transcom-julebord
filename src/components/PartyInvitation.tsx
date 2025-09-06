@@ -13,6 +13,7 @@ interface FormData {
   email: string;
   phone: string;
   hasAllergies: boolean;
+  allergyComment: string;
   isELogIT: boolean;
   isNegotia: boolean;
 }
@@ -35,6 +36,7 @@ const PartyInvitation = () => {
     email: "",
     phone: "",
     hasAllergies: false,
+    allergyComment: "",
     isELogIT: false,
     isNegotia: false
   });
@@ -67,6 +69,7 @@ const PartyInvitation = () => {
           email: formData.email,
           phone: formData.phone,
           hasAllergies: formData.hasAllergies,
+          allergyComment: formData.allergyComment,
           isELogIT: formData.isELogIT,
           isNegotia: formData.isNegotia
         }),
@@ -85,6 +88,7 @@ const PartyInvitation = () => {
         email: "", 
         phone: "", 
         hasAllergies: false, 
+        allergyComment: "",
         isELogIT: false, 
         isNegotia: false 
       });
@@ -99,8 +103,9 @@ const PartyInvitation = () => {
     }
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value, type, checked } = e.target;
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value, type } = e.target;
+    const checked = 'checked' in e.target ? e.target.checked : false;
     setFormData(prev => ({
       ...prev,
       [name]: type === 'checkbox' ? checked : value
@@ -349,21 +354,47 @@ const RSVPForm = ({
               
               <div className="space-y-3">
                 <motion.div
-                  className="flex items-center space-x-3 p-3 bg-background/30 rounded-lg border border-party-blue/20"
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ type: "spring", stiffness: 300 }}
+                  className="space-y-3"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ delay: 0.7, duration: 0.8 }}
                 >
-                  <input
-                    type="checkbox"
-                    id="hasAllergies"
-                    name="hasAllergies"
-                    checked={formData.hasAllergies}
-                    onChange={handleInputChange}
-                    className="w-4 h-4 text-party-blue bg-background border-party-blue/30 rounded focus:ring-party-blue focus:ring-2"
-                  />
-                  <label htmlFor="hasAllergies" className="text-sm font-medium text-foreground cursor-pointer">
-                    Jeg har matallergier som arrangørene bør vite om
-                  </label>
+                  <div className="flex items-center space-x-3 p-3 bg-background/30 rounded-lg border border-party-blue/20">
+                    <input
+                      type="checkbox"
+                      id="hasAllergies"
+                      name="hasAllergies"
+                      checked={formData.hasAllergies}
+                      onChange={handleInputChange}
+                      className="w-4 h-4 text-party-blue bg-background border-party-blue/30 rounded focus:ring-party-blue focus:ring-2"
+                    />
+                    <label htmlFor="hasAllergies" className="text-sm font-medium text-foreground cursor-pointer">
+                      Jeg har matallergier som arrangørene bør vite om
+                    </label>
+                  </div>
+                  
+                  {formData.hasAllergies && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="ml-7"
+                    >
+                      <label htmlFor="allergyComment" className="block text-sm font-medium text-party-blue mb-2">
+                        Beskriv allergiene dine (valgfritt)
+                      </label>
+                      <textarea
+                        id="allergyComment"
+                        name="allergyComment"
+                        value={formData.allergyComment}
+                        onChange={handleInputChange}
+                        placeholder="F.eks. nøtter, gluten, laktose..."
+                        rows={3}
+                        className="w-full p-3 bg-background/50 border border-party-blue/30 focus:border-party-blue rounded-xl text-foreground placeholder:text-muted-foreground resize-none"
+                      />
+                    </motion.div>
+                  )}
                 </motion.div>
 
                 <motion.div
