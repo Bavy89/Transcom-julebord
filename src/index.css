@@ -115,3 +115,47 @@ All colors MUST be HSL.
     @apply bg-background text-foreground;
   }
 }
+
+/* Custom styles for large success toast */
+.toast-success-large {
+  @apply fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[9999] !important;
+  @apply w-[90vw] max-w-2xl mx-auto !important;
+  @apply min-h-[200px] !important;
+  @apply text-center !important;
+  @apply bg-gradient-to-br from-green-400 via-green-500 to-blue-600 !important;
+  @apply text-white !important;
+  @apply border-0 !important;
+  @apply shadow-2xl !important;
+  @apply rounded-2xl !important;
+  @apply p-8 !important;
+  @apply animate-pulse !important;
+}
+
+.toast-success-large .toast-title {
+  @apply text-3xl md:text-4xl font-black !important;
+  @apply mb-4 !important;
+  @apply text-center !important;
+}
+
+.toast-success-large .toast-description {
+  @apply text-xl md:text-2xl font-semibold !important;
+  @apply text-center !important;
+  @apply leading-relaxed !important;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 640px) {
+  .toast-success-large {
+    @apply w-[95vw] !important;
+    @apply min-h-[250px] !important;
+    @apply p-6 !important;
+  }
+  
+  .toast-success-large .toast-title {
+    @apply text-2xl !important;
+  }
+  
+  .toast-success-large .toast-description {
+    @apply text-lg !important;
+  }
+}

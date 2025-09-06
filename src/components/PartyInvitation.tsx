@@ -80,8 +80,10 @@ const PartyInvitation = () => {
       console.log('RSVP data sent successfully');
       
       toast({
-        title: "Wow, takk for at du meldte deg på! 🎉",
-        description: `Vi gleder oss til å se deg på festen, ${formData.name}!`,
+        title: "🎉 WOW! Du er meldt på! 🎉",
+        description: `Tusen takk ${formData.name}! Vi gleder oss til å se deg på Transcom Julebord 2025! 🎄✨`,
+        className: "toast-success-large",
+        duration: 8000,
       });
       setFormData({ 
         name: "", 
