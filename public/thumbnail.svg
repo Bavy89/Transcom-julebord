@@ -47,10 +47,6 @@
     2025
   </text>
   
-  <!-- Party description -->
-  <text x="600" y="400" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="white" opacity="0.8">
-    Velkommen til vår fantastiske julefeiring!
-  </text>
   
   <!-- Decorative stars -->
   <path d="M100 100 L105 110 L115 110 L107 118 L112 128 L100 120 L88 128 L93 118 L85 110 L95 110 Z" fill="#fbbf24" opacity="0.8"/>
