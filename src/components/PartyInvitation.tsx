@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 // Updated: Project synced to GitHub $(date)
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
@@ -242,16 +242,57 @@ const HeroSection = ({ titleScale, onScrollToForm }: { titleScale: any, onScroll
 
 // Image Gallery Component
 const ImageGallery = () => {
-  // Liste over bilder som skal vises i collagen - bruker de faktiske bildene du har lastet opp
-  const images = [
-    '/images/unnamed.jpg',
-    '/images/unnamed (1).jpg',
-    '/images/unnamed (2).jpg',
-    '/images/unnamed (3).jpg',
-    '/images/unnamed (4).jpg',
-    '/images/unnamed (5).jpg',
-    '/images/unnamed (6).jpg'
-  ];
+  const [images, setImages] = useState<string[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  // Funksjon for å hente alle bilder fra images-mappen
+  const loadImages = async () => {
+    try {
+      setLoading(true);
+      // Liste over mulige bildeformater
+      const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg'];
+      const loadedImages: string[] = [];
+      
+      // Prøv å laste bilder med forskjellige navn og formater
+      for (let i = 0; i < 20; i++) { // Sjekk opp til 20 bilder
+        const possibleNames = [
+          `unnamed${i === 0 ? '' : ` (${i})`}`,
+          `image${i}`,
+          `photo${i}`,
+          `party${i}`,
+          `team${i}`,
+          `event${i}`
+        ];
+        
+        for (const name of possibleNames) {
+          for (const ext of imageExtensions) {
+            const imagePath = `/images/${name}${ext}`;
+            try {
+              // Test om bildet eksisterer ved å prøve å laste det
+              const response = await fetch(imagePath, { method: 'HEAD' });
+              if (response.ok && !loadedImages.includes(imagePath)) {
+                loadedImages.push(imagePath);
+              }
+            } catch (error) {
+              // Bildet eksisterer ikke, fortsett til neste
+            }
+          }
+        }
+      }
+      
+      setImages(loadedImages);
+    } catch (error) {
+      console.error('Feil ved lasting av bilder:', error);
+      setImages([]);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Last bilder når komponenten mounter
+  useEffect(() => {
+    loadImages();
+  }, []);
 
   return (
     <motion.section 
@@ -277,47 +318,78 @@ const ImageGallery = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {images.map((image, index) => (
-            <motion.div
-              key={index}
-              className="relative group cursor-pointer"
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              whileHover={{ scale: 1.05 }}
-            >
-              <div className="aspect-square rounded-xl overflow-hidden bg-gradient-to-br from-party-blue/20 to-party-blue-light/20 border border-party-blue/30">
-                <img
-                  src={image}
-                  alt={`Transcom team bilde ${index + 1}`}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                  onError={(e) => {
-                    // Fallback hvis bildet ikke finnes
-                    e.currentTarget.style.display = 'none';
-                  }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="absolute bottom-2 left-2 right-2 text-white text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  Transcom Team
+        {loading ? (
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {[...Array(6)].map((_, index) => (
+              <div
+                key={index}
+                className="aspect-square rounded-xl bg-gradient-to-br from-party-blue/20 to-party-blue-light/20 border border-party-blue/30 animate-pulse"
+              />
+            ))}
+          </div>
+        ) : images.length > 0 ? (
+          <div className={`grid gap-4 ${
+            images.length === 1 ? 'grid-cols-1 max-w-md mx-auto' :
+            images.length === 2 ? 'grid-cols-2 max-w-2xl mx-auto' :
+            images.length === 3 ? 'grid-cols-3 max-w-3xl mx-auto' :
+            images.length === 4 ? 'grid-cols-2 md:grid-cols-4' :
+            images.length <= 6 ? 'grid-cols-2 md:grid-cols-3' :
+            'grid-cols-2 md:grid-cols-3 lg:grid-cols-4'
+          }`}>
+            {images.map((image, index) => (
+              <motion.div
+                key={index}
+                className="relative group cursor-pointer"
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.05 }}
+              >
+                <div className="aspect-square rounded-xl overflow-hidden bg-gradient-to-br from-party-blue/20 to-party-blue-light/20 border border-party-blue/30">
+                  <img
+                    src={image}
+                    alt={`Transcom team bilde ${index + 1}`}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    onError={(e) => {
+                      // Fallback hvis bildet ikke finnes
+                      e.currentTarget.style.display = 'none';
+                    }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute bottom-2 left-2 right-2 text-white text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    Transcom Team
+                  </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+              </motion.div>
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-12">
+            <div className="text-6xl mb-4">📸</div>
+            <h3 className="text-xl font-semibold mb-2">Ingen bilder funnet</h3>
+            <p className="text-muted-foreground">
+              Legg inn bilder i <code className="bg-background/50 px-2 py-1 rounded text-party-blue">/public/images/</code> mappen
+            </p>
+          </div>
+        )}
 
-        <motion.div
-          className="text-center mt-12"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          viewport={{ once: true }}
-        >
-          <p className="text-muted-foreground">
-            Flotte bilder fra vårt team og arrangementer! 🎉
-          </p>
-        </motion.div>
+        {images.length > 0 && (
+          <motion.div
+            className="text-center mt-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            viewport={{ once: true }}
+          >
+            <p className="text-muted-foreground">
+              {images.length} {images.length === 1 ? 'bilde' : 'bilder'} fra vårt team og arrangementer! 🎉
+            </p>
+            <p className="text-sm text-muted-foreground/70 mt-2">
+              Legg til eller fjern bilder i <code className="bg-background/50 px-2 py-1 rounded text-party-blue">/public/images/</code> for å oppdatere galleriet automatisk
+            </p>
+          </motion.div>
+        )}
       </div>
     </motion.section>
   );
@@ -544,17 +616,17 @@ const RSVPForm = ({
   formSectionRef
 }: {
   formData: FormData;
-  handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleInputChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   handleSubmit: (e: React.FormEvent) => void;
   formSectionRef: React.RefObject<HTMLElement>;
 }) => {
-  const formRef = useRef(null);
+  const formRef = useRef<HTMLElement>(null);
   const isInView = useInView(formRef, { once: true });
 
   return (
     <section ref={el => {
-      formRef.current = el;
-      if (formSectionRef) formSectionRef.current = el;
+      if (formRef) formRef.current = el as HTMLElement;
+      if (formSectionRef) formSectionRef.current = el as HTMLElement;
     }} className="py-20 px-6 relative">
       <motion.div
         className="max-w-4xl mx-auto"
