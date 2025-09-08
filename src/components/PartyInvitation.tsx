@@ -246,10 +246,10 @@ const ImageGallery = () => {
   const images = [
     '/images/unnamed.jpg',
     '/images/unnamed (1).jpg',
-    '/images/unnamed (2).jpg',
     '/images/unnamed (3).jpg',
     '/images/unnamed (4).jpg',
-    '/images/unnamed (5).jpg'
+    '/images/unnamed (5).jpg',
+    '/images/unnamed (6).jpg'
   ];
 
   return (
