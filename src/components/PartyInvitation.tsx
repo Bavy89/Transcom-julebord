@@ -277,10 +277,22 @@ const EventDetails = () => {
               <h3 className="text-2xl font-bold text-foreground">Sted & Mat</h3>
             </div>
             <div className="space-y-4 text-muted-foreground">
-              <p className="flex items-start">
+              <div className="flex items-start">
                 <Utensils className="w-5 h-5 text-party-blue mr-3 mt-1 flex-shrink-0" />
-                <span><strong className="text-foreground">City Scene</strong> - Vi møtes på City scene</span>
-              </p>
+                <div>
+                  <span><strong className="text-foreground">City Scene</strong> - Vi møtes på City scene</span>
+                  <br />
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="mt-2 bg-party-blue/10 border-party-blue/30 text-party-blue hover:bg-party-blue/20"
+                    onClick={() => window.open('https://maps.google.com/?q=City+Scene+Oslo', '_blank')}
+                  >
+                    <MapPin className="w-4 h-4 mr-2" />
+                    Åpne i Google Maps
+                  </Button>
+                </div>
+              </div>
               <p className="flex items-start">
                 <Utensils className="w-5 h-5 text-party-blue mr-3 mt-1 flex-shrink-0" />
                 <span>3-retters middag servert til alle</span>
@@ -366,21 +378,40 @@ const EventDetails = () => {
             <div className="space-y-6">
               <div className="flex items-start">
                 <Mail className="w-6 h-6 text-party-blue mr-4 mt-1 flex-shrink-0" />
-                <div>
+                <div className="flex-1">
                   <h4 className="text-xl font-semibold text-foreground mb-2">Betaling til</h4>
-                  <p className="text-muted-foreground">
+                  <p className="text-muted-foreground mb-3">
                     <strong className="text-foreground">Aina Koteng</strong><br />
                     <span className="text-sm">Kontant, kort eller Vipps</span>
                   </p>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="bg-blue-500/10 border-blue-500/30 text-blue-400 hover:bg-blue-500/20"
+                    onClick={() => window.open('mailto:aina.koteng@transcom.com?subject=Transcom Julebord 2025 - Betaling', '_blank')}
+                  >
+                    <Mail className="w-4 h-4 mr-2" />
+                    Send e-post til Aina
+                  </Button>
                 </div>
               </div>
 
               <div className="bg-background/50 rounded-lg p-4 border border-party-blue/20">
-                <h4 className="text-lg font-semibold text-foreground mb-2">Vipps</h4>
-                <p className="text-muted-foreground text-sm">
-                  <strong>909 54 328</strong><br />
-                  Send også e-post til <strong>aina.koteng@transcom.com</strong> dersom du vippser
-                </p>
+                <h4 className="text-lg font-semibold text-foreground mb-3">Vipps</h4>
+                <div className="space-y-3">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="w-full bg-green-500/10 border-green-500/30 text-green-400 hover:bg-green-500/20"
+                    onClick={() => window.open('https://vipps.no/send-payment/?phone=90954328', '_blank')}
+                  >
+                    <CreditCard className="w-4 h-4 mr-2" />
+                    Vipps til 909 54 328
+                  </Button>
+                  <p className="text-muted-foreground text-sm">
+                    Send også e-post til <strong>aina.koteng@transcom.com</strong> dersom du vippser
+                  </p>
+                </div>
               </div>
             </div>
           </div>
