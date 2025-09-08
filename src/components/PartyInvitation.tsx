@@ -557,31 +557,33 @@ const EventDetails = () => {
             <p className="text-lg text-muted-foreground">Stem på dine favoritter for årets Transcom Awards!</p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 max-w-2xl mx-auto">
             <Button
               variant="outline"
               size="lg"
-              className="h-16 bg-gradient-to-r from-amber-500/20 to-yellow-500/20 border-amber-500/50 text-foreground hover:from-amber-500/30 hover:to-yellow-500/30 hover:border-amber-500/70 font-semibold text-lg"
+              className="h-14 sm:h-16 bg-gradient-to-r from-amber-500/20 to-yellow-500/20 border-amber-500/50 text-foreground hover:from-amber-500/30 hover:to-yellow-500/30 hover:border-amber-500/70 font-semibold text-sm sm:text-lg px-3 sm:px-6"
               onClick={() => {
                 // TODO: Replace with actual voting link
                 console.log('Stem på Årets Gledespreder');
               }}
             >
-              <Star className="w-6 h-6 mr-3" />
-              Stem på Årets Gledespreder
+              <Star className="w-5 h-5 sm:w-6 sm:h-6 mr-2 sm:mr-3" />
+              <span className="hidden xs:inline">Stem på Årets Gledespreder</span>
+              <span className="xs:hidden">Årets Gledespreder</span>
             </Button>
 
             <Button
               variant="outline"
               size="lg"
-              className="h-16 bg-gradient-to-r from-blue-500/20 to-indigo-500/20 border-blue-500/50 text-foreground hover:from-blue-500/30 hover:to-indigo-500/30 hover:border-blue-500/70 font-semibold text-lg"
+              className="h-14 sm:h-16 bg-gradient-to-r from-blue-500/20 to-indigo-500/20 border-blue-500/50 text-foreground hover:from-blue-500/30 hover:to-indigo-500/30 hover:border-blue-500/70 font-semibold text-sm sm:text-lg px-3 sm:px-6"
               onClick={() => {
                 // TODO: Replace with actual voting link
                 console.log('Stem på Årets Transcom');
               }}
             >
-              <Users className="w-6 h-6 mr-3" />
-              Stem på Årets Transcomer
+              <Users className="w-5 h-5 sm:w-6 sm:h-6 mr-2 sm:mr-3" />
+              <span className="hidden xs:inline">Stem på Årets Transcomer</span>
+              <span className="xs:hidden">Årets Transcomer</span>
             </Button>
           </div>
 

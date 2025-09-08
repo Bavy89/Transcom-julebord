@@ -116,39 +116,33 @@ All colors MUST be HSL.
   }
 }
 
-/* Custom styles for large success toast - Apple Glass Effect */
+/* Custom styles for large success toast */
 .toast-success-large {
   @apply fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[9999] !important;
   @apply w-[90vw] max-w-2xl mx-auto !important;
   @apply min-h-[200px] !important;
   @apply text-center !important;
-  @apply bg-white/10 !important;
-  @apply backdrop-blur-xl !important;
+  @apply bg-gradient-to-br from-slate-900 via-slate-800 to-blue-900 !important;
   @apply text-white !important;
-  @apply border border-white/20 !important;
+  @apply border border-blue-500/30 !important;
   @apply shadow-2xl !important;
-  @apply rounded-3xl !important;
+  @apply rounded-2xl !important;
   @apply p-8 !important;
-  @apply before:absolute before:inset-0 before:rounded-3xl before:bg-gradient-to-br before:from-white/20 before:to-white/5 before:pointer-events-none !important;
-  @apply relative overflow-hidden !important;
 }
 
 .toast-success-large .toast-title {
   @apply text-3xl md:text-4xl font-black !important;
   @apply mb-4 !important;
   @apply text-center !important;
-  @apply text-white !important;
-  @apply drop-shadow-2xl !important;
-  @apply relative z-10 !important;
+  @apply bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent !important;
+  @apply drop-shadow-lg !important;
 }
 
 .toast-success-large .toast-description {
-  @apply text-xl md:text-2xl font-semibold !important;
-  @apply text-center !important;
+  @apply text-lg md:text-xl !important;
+  @apply text-white/90 !important;
   @apply leading-relaxed !important;
-  @apply text-white/95 !important;
-  @apply drop-shadow-xl !important;
-  @apply relative z-10 !important;
+  @apply drop-shadow-md !important;
 }
 
 /* Mobile responsiveness */
