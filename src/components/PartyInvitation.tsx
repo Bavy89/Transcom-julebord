@@ -239,6 +239,18 @@ const HeroSection = ({ titleScale, onScrollToForm }: { titleScale: any, onScroll
 
 // Event Details Component
 const EventDetails = () => {
+  const handleVippsClick = () => {
+    const vippsUrl = 'https://vipps.no/send-payment/?phone=90954328';
+    const vippsAppUrl = 'vipps://';
+    
+    // Prøv å åpne Vipps-appen direkte
+    window.location.href = vippsAppUrl;
+    
+    // Bruk en fallback-løsning hvis appen ikke åpnes
+    setTimeout(() => {
+      window.open(vippsUrl, '_blank');
+    }, 1000); // 1000 ms ventetid
+  };
   return (
     <motion.section 
       className="py-20 px-4"
@@ -403,7 +415,7 @@ const EventDetails = () => {
                     variant="outline"
                     size="sm"
                     className="w-full bg-orange-500 border-orange-500 text-white hover:bg-orange-600 hover:border-orange-600 font-semibold"
-                    onClick={() => window.open('https://vipps.no/send-payment/?phone=90954328', '_blank')}
+                    onClick={handleVippsClick}
                   >
                     <CreditCard className="w-4 h-4 mr-2" />
                     Vipps til 909 54 328
