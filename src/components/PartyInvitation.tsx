@@ -162,6 +162,9 @@ const PartyInvitation = () => {
       {/* Event Details Section */}
       <EventDetails />
       
+      {/* Image Gallery Section */}
+      <ImageGallery />
+      
       {/* RSVP Form */}
       <RSVPForm 
         formData={formData}
@@ -234,6 +237,90 @@ const HeroSection = ({ titleScale, onScrollToForm }: { titleScale: any, onScroll
         </motion.div>
       </motion.div>
     </section>
+  );
+};
+
+// Image Gallery Component
+const ImageGallery = () => {
+  // Liste over bilder som skal vises i collagen
+  const images = [
+    '/images/team1.jpg',
+    '/images/party1.jpg', 
+    '/images/office1.jpg',
+    '/images/celebration1.jpg',
+    '/images/team2.jpg',
+    '/images/party2.jpg',
+    '/images/office2.jpg',
+    '/images/celebration2.jpg'
+  ];
+
+  return (
+    <motion.section 
+      className="py-20 px-4"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 0.8 }}
+      viewport={{ once: true }}
+    >
+      <div className="max-w-6xl mx-auto">
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-party-blue to-party-blue-light mb-6">
+            Vårt Team
+          </h2>
+          <p className="text-xl text-muted-foreground">
+            Se bilder fra våre fantastiske arrangementer og arbeidsplass
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {images.map((image, index) => (
+            <motion.div
+              key={index}
+              className="relative group cursor-pointer"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.05 }}
+            >
+              <div className="aspect-square rounded-xl overflow-hidden bg-gradient-to-br from-party-blue/20 to-party-blue-light/20 border border-party-blue/30">
+                <img
+                  src={image}
+                  alt={`Transcom team bilde ${index + 1}`}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                  onError={(e) => {
+                    // Fallback hvis bildet ikke finnes
+                    e.currentTarget.style.display = 'none';
+                  }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute bottom-2 left-2 right-2 text-white text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  Transcom Team
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        <motion.div
+          className="text-center mt-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          viewport={{ once: true }}
+        >
+          <p className="text-muted-foreground">
+            Legg inn dine egne bilder i <code className="bg-background/50 px-2 py-1 rounded text-party-blue">/public/images/</code> mappen
+          </p>
+        </motion.div>
+      </div>
+    </motion.section>
   );
 };
 
