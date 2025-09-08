@@ -527,6 +527,52 @@ const EventDetails = () => {
           </div>
 
         </motion.div>
+
+        {/* Voting Section */}
+        <motion.div
+          className="bg-gradient-to-r from-amber-500/10 to-yellow-500/10 backdrop-blur-sm rounded-2xl p-8 border border-amber-500/30 mt-8"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+          viewport={{ once: true }}
+        >
+          <div className="text-center mb-8">
+            <h3 className="text-3xl font-bold text-foreground mb-4">Årets Utmerkelser</h3>
+            <p className="text-lg text-muted-foreground">Stem på dine favoritter for årets julebord!</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+            <Button
+              variant="outline"
+              size="lg"
+              className="h-16 bg-gradient-to-r from-amber-500/20 to-yellow-500/20 border-amber-500/50 text-foreground hover:from-amber-500/30 hover:to-yellow-500/30 hover:border-amber-500/70 font-semibold text-lg"
+              onClick={() => {
+                // TODO: Replace with actual voting link
+                console.log('Stem på Årets Gledespreder');
+              }}
+            >
+              <Star className="w-6 h-6 mr-3" />
+              Stem på Årets Gledespreder
+            </Button>
+
+            <Button
+              variant="outline"
+              size="lg"
+              className="h-16 bg-gradient-to-r from-blue-500/20 to-indigo-500/20 border-blue-500/50 text-foreground hover:from-blue-500/30 hover:to-indigo-500/30 hover:border-blue-500/70 font-semibold text-lg"
+              onClick={() => {
+                // TODO: Replace with actual voting link
+                console.log('Stem på Årets Transcom');
+              }}
+            >
+              <Users className="w-6 h-6 mr-3" />
+              Stem på Årets Transcom
+            </Button>
+          </div>
+
+          <p className="text-center text-muted-foreground text-sm mt-6">
+            Stemmene telles opp under julebordet! 🗳️
+          </p>
+        </motion.div>
       </div>
     </motion.section>
   );
