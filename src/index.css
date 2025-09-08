@@ -122,12 +122,13 @@ All colors MUST be HSL.
   @apply w-[90vw] max-w-2xl mx-auto !important;
   @apply min-h-[200px] !important;
   @apply text-center !important;
-  @apply bg-gradient-to-br from-slate-900 via-slate-800 to-blue-900 !important;
+  @apply bg-gradient-to-br from-slate-900/95 via-slate-800/95 to-blue-900/95 !important;
   @apply text-white !important;
   @apply border border-blue-500/30 !important;
   @apply shadow-2xl !important;
   @apply rounded-2xl !important;
   @apply p-8 !important;
+  @apply backdrop-blur-sm !important;
 }
 
 .toast-success-large .toast-title {

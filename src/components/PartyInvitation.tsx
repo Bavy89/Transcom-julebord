@@ -96,7 +96,7 @@ const PartyInvitation = () => {
         title: "🎉 WOW! Du er meldt på! 🎉",
         description: `Tusen takk ${formData.name}! Vi gleder oss til å se deg på Transcom Awards 2025! 🎄✨`,
         className: "toast-success-large",
-        duration: 8000,
+        duration: 5000,
       });
       setFormData({ 
         name: "", 
