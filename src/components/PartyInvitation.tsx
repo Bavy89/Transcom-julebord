@@ -384,19 +384,10 @@ const EventDetails = () => {
                 <Mail className="w-6 h-6 text-party-blue mr-4 mt-1 flex-shrink-0" />
                 <div className="flex-1">
                   <h4 className="text-xl font-semibold text-foreground mb-2">Betaling til</h4>
-                  <p className="text-muted-foreground mb-3">
+                  <p className="text-muted-foreground">
                     <strong className="text-foreground">Aina Koteng</strong><br />
                     <span className="text-sm">Kontant, kort eller Vipps</span>
                   </p>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="bg-blue-500/10 border-blue-500/30 text-blue-400 hover:bg-blue-500/20"
-                    onClick={() => window.open('mailto:aina.koteng@transcom.com?subject=Transcom Julebord 2025 - Betaling', '_blank')}
-                  >
-                    <Mail className="w-4 h-4 mr-2" />
-                    Send e-post til Aina
-                  </Button>
                 </div>
               </div>
 
@@ -412,6 +403,17 @@ const EventDetails = () => {
                     <CreditCard className="w-4 h-4 mr-2" />
                     Vipps til 909 54 328
                   </Button>
+                  
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="w-full bg-red-500 border-red-500 text-white hover:bg-red-600 hover:border-red-600 font-semibold"
+                    onClick={() => window.open('mailto:aina.koteng@transcom.com?subject=Transcom Julebord 2025 - Betaling', '_blank')}
+                  >
+                    <Mail className="w-4 h-4 mr-2" />
+                    Send e-post til Aina
+                  </Button>
+                  
                   <p className="text-muted-foreground text-sm">
                     Send også e-post til <strong>aina.koteng@transcom.com</strong> dersom du vippser
                   </p>
