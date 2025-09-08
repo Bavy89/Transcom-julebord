@@ -186,6 +186,7 @@ const PartyInvitation = () => {
         handleInputChange={handleInputChange}
         handleSubmit={handleSubmit}
         formSectionRef={formSectionRef} // Pass ref to RSVPForm
+        isSubmitting={isSubmitting}
       />
       
       {/* Footer */}
@@ -595,20 +596,22 @@ const RSVPForm = ({
   formData, 
   handleInputChange, 
   handleSubmit,
-  formSectionRef
+  formSectionRef,
+  isSubmitting
 }: {
   formData: FormData;
   handleInputChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   handleSubmit: (e: React.FormEvent) => void;
   formSectionRef: React.RefObject<HTMLElement>;
+  isSubmitting: boolean;
 }) => {
   const formRef = useRef<HTMLElement>(null);
   const isInView = useInView(formRef, { once: true });
 
   return (
     <section ref={el => {
-      if (formRef) formRef.current = el as HTMLElement;
-      if (formSectionRef) formSectionRef.current = el as HTMLElement;
+      if (formRef && el) (formRef as any).current = el as HTMLElement;
+      if (formSectionRef && el) (formSectionRef as any).current = el as HTMLElement;
     }} className="py-20 px-6 relative">
       <motion.div
         className="max-w-4xl mx-auto"
