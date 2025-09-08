@@ -4,7 +4,7 @@ import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
-import { Calendar, Clock, MapPin, Users, Star, Sparkles, Utensils, Music, CreditCard, Mail } from "lucide-react";
+import { Calendar, Clock, MapPin, Users, Star, Sparkles, Utensils, Music, CreditCard, Mail, Copy } from "lucide-react";
 
 // Updated: Project synced to GitHub $(date)
 
@@ -239,9 +239,30 @@ const HeroSection = ({ titleScale, onScrollToForm }: { titleScale: any, onScroll
 
 // Event Details Component
 const EventDetails = () => {
+  const { toast } = useToast();
+
   const handleVippsClick = () => {
     // Enkel løsning: åpne Vipps-appen
     window.location.href = 'vipps://';
+  };
+
+  const handleCopyNumber = async () => {
+    try {
+      await navigator.clipboard.writeText('90954328');
+      toast({
+        title: "Nummer kopiert! 📋",
+        description: "Vipps nummer 909 54 328 er kopiert til utklippstavlen",
+        className: "toast-success-large",
+        duration: 3000,
+      });
+    } catch (err) {
+      console.error('Kunne ikke kopiere nummer:', err);
+      toast({
+        title: "Kunne ikke kopiere",
+        description: "Prøv å skrive nummeret manuelt: 909 54 328",
+        variant: "destructive"
+      });
+    }
   };
   return (
     <motion.section 
@@ -401,7 +422,17 @@ const EventDetails = () => {
                     onClick={handleVippsClick}
                   >
                     <CreditCard className="w-4 h-4 mr-2" />
-                    Vipps til 909 54 328
+                    Åpne Vipps
+                  </Button>
+                  
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="w-full bg-gray-500 border-gray-500 text-white hover:bg-gray-600 hover:border-gray-600 font-semibold"
+                    onClick={handleCopyNumber}
+                  >
+                    <Copy className="w-4 h-4 mr-2" />
+                    Kopier nummer: 909 54 328
                   </Button>
                   
                   <Button
