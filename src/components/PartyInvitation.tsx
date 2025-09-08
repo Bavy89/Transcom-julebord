@@ -240,16 +240,8 @@ const HeroSection = ({ titleScale, onScrollToForm }: { titleScale: any, onScroll
 // Event Details Component
 const EventDetails = () => {
   const handleVippsClick = () => {
-    const vippsUrl = 'https://vipps.no/send-payment/?phone=90954328';
-    const vippsAppUrl = 'vipps://send-payment?phone=90954328';
-    
-    // Prøv å åpne Vipps-appen direkte med riktig format
-    window.location.href = vippsAppUrl;
-    
-    // Bruk en fallback-løsning hvis appen ikke åpnes
-    setTimeout(() => {
-      window.open(vippsUrl, '_blank');
-    }, 1000); // 1000 ms ventetid
+    // Åpne Vipps-appen direkte
+    window.location.href = 'vipps://';
   };
   return (
     <motion.section 
