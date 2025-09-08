@@ -1,59 +1,47 @@
 function doPost(e) {
   try {
-    // Add CORS headers
-    const response = ContentService.createTextOutput();
-    response.setMimeType(ContentService.MimeType.JSON);
-    
-    // Handle CORS preflight request
-    if (e.parameter && e.parameter.method === 'OPTIONS') {
-      return response.setContent(JSON.stringify({status: 'OK'}));
-    }
-    
-    if (!e || !e.postData || !e.postData.contents) {
-      throw new Error("No POST data received.");
-    }
-    
-    var sheet = SpreadsheetApp.openById('1cTee8S19dK_Rzj2ZOpPy8iDXh_XohGe5Sym6onEvyrg').getSheetByName('Blad1');
-    var data = JSON.parse(e.postData.contents);
+    // Get the active spreadsheet and sheet
+    var ss = SpreadsheetApp.openById('163iKmKo-OWJ_fLTO3NzbUsuXr0Ksx3xzQDShX8_WeCk');
+    var sheet = ss.getSheetByName('Ark 1');
 
-    if (!data.name || !data.email || !data.phone) {
-      throw new Error("Missing required fields.");
-    }
+    // Parse the incoming data
+    var data = JSON.parse(e.postData.contents);
 
     // Add headers if this is the first row
     if (sheet.getLastRow() === 0) {
       sheet.getRange(1, 1, 1, 8).setValues([['Navn', 'E-post', 'Telefon', 'Matallergier', 'Allergi-kommentar', 'ELogIT', 'Negotia', 'Dato']]);
     }
-    
-    // Add the new row
+
+    // Add the new row with all fields
     sheet.appendRow([
-      data.name, 
-      data.email, 
-      data.phone, 
+      data.name,
+      data.email,
+      data.phone,
       data.hasAllergies ? 'Ja' : 'Nei',
       data.allergyComment || '',
       data.isELogIT ? 'Ja' : 'Nei',
       data.isNegotia ? 'Ja' : 'Nei',
       new Date()
     ]);
-    
-    return response.setContent(JSON.stringify({
-      status: 'success',
-      message: 'Data saved successfully'
-    }));
-    
-  } catch (err) {
+
+    // Return success response
     return ContentService.createTextOutput(JSON.stringify({
-      status: 'error',
-      message: err.message
+      success: true,
+      message: 'Data saved successfully'
+    })).setMimeType(ContentService.MimeType.JSON);
+
+  } catch (error) {
+    // Return error response
+    return ContentService.createTextOutput(JSON.stringify({
+      success: false,
+      error: error.toString()
     })).setMimeType(ContentService.MimeType.JSON);
   }
 }
 
-// Add doGet function for CORS
-function doGet(e) {
+function doGet() {
   return ContentService.createTextOutput(JSON.stringify({
     status: 'OK',
-    message: 'Google Apps Script is running'
+    message: 'Script is running'
   })).setMimeType(ContentService.MimeType.JSON);
 }
