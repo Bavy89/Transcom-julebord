@@ -306,7 +306,7 @@ const ImageGallery = () => {
               <div className="aspect-square rounded-xl overflow-hidden bg-gradient-to-br from-party-blue/20 to-party-blue-light/20 border border-party-blue/30">
                 <img
                   src={image}
-                  alt={`Julebord 2024 bilde ${index + 1}`}
+                  alt={`Awards 2024 bilde ${index + 1}`}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                   onError={(e) => {
                     // Fallback hvis bildet ikke finnes
@@ -367,7 +367,7 @@ const EventDetails = () => {
             Eventdetaljer
           </h2>
           <p className="text-xl text-muted-foreground">
-            Alt du trenger å vite om Transcom Julebord 2025
+            Alt du trenger å vite om Transcom Awards 2025
           </p>
         </motion.div>
 

@@ -6,7 +6,7 @@ Legg inn bilder her som skal brukes i bilde-collagen på nettsiden.
 - Festlige bilder fra tidligere arrangementer
 - Team-bilder
 - Arbeidsplass-bilder
-- Julebord-bilder fra tidligere år
+- Awards-bilder fra tidligere år
 - Generelle Transcom-bilder
 
 ## Filformater som støttes:

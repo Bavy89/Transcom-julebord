@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Images - don't push to GitHub
+public/images/
+public/favicon-t.webp

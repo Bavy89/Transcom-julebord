@@ -39,7 +39,7 @@
   
   <!-- Main title with party theme -->
   <text x="600" y="280" text-anchor="middle" font-family="Arial, sans-serif" font-size="56" font-weight="bold" fill="url(#text)" filter="url(#glow)">
-    Transcom Julebord
+    Transcom Awards
   </text>
   
   <!-- Subtitle -->
