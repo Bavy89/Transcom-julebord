@@ -260,12 +260,12 @@ const HeroSection = ({ titleScale, onScrollToForm }: { titleScale: any, onScroll
 const ImageGallery = () => {
   // Fast liste med 6 bilder - 3 opp og 3 nede
   const images = [
-    '/images/Transcom1.png',
-    '/images/Transcom2.png',
-    '/images/Transcom3.png',
-    '/images/Transcom4.png',
-    '/images/Transcom5.png',
-    '/images/Transcom6.png'
+    '/images/A4 - 2.png',
+    '/images/A4 - 3.png',
+    '/images/A4 - 4.png',
+    '/images/A4 - 5.png',
+    '/images/A4 - 6.png',
+    '/images/A4 - 7.png'
   ];
 
   return (
