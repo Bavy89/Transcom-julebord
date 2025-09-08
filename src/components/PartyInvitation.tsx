@@ -40,6 +40,7 @@ const PartyInvitation = () => {
     isELogIT: false,
     isNegotia: false
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const { toast } = useToast();
 
@@ -55,6 +56,18 @@ const PartyInvitation = () => {
       });
       return;
     }
+
+    // Validate Transcom email
+    if (!formData.email.toLowerCase().includes('@transcom.com')) {
+      toast({
+        title: "Ugyldig e-post",
+        description: "Vennligst bruk din Transcom e-postadresse (@transcom.com).",
+        variant: "destructive"
+      });
+      return;
+    }
+    
+    setIsSubmitting(true);
     
     try {
       // Use no-cors mode to avoid CORS issues with Google Apps Script
@@ -102,6 +115,8 @@ const PartyInvitation = () => {
         description: "Kunne ikke sende påmeldingen. Vennligst prøv igjen.",
         variant: "destructive"
       });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -659,7 +674,7 @@ const RSVPForm = ({
                 <Input
                   name="email"
                   type="email"
-                  placeholder="din.epost@transcom.com"
+                  placeholder="ditt.navn@transcom.com"
                   value={formData.email}
                   onChange={handleInputChange}
                   required
@@ -789,9 +804,19 @@ const RSVPForm = ({
                 variant="rsvp" 
                 size="lg"
                 className="px-12 py-4 text-lg animate-glow-pulse"
+                disabled={isSubmitting}
               >
-                <Users className="w-6 h-6 mr-3" />
-                Send inn!
+                {isSubmitting ? (
+                  <>
+                    <div className="w-6 h-6 mr-3 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                    Sender inn...
+                  </>
+                ) : (
+                  <>
+                    <Users className="w-6 h-6 mr-3" />
+                    Send inn!
+                  </>
+                )}
               </Button>
             </motion.div>
           </form>
