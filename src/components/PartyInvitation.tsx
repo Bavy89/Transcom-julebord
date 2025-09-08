@@ -4,7 +4,7 @@ import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
-import { Calendar, Clock, MapPin, Users, Star, Sparkles } from "lucide-react";
+import { Calendar, Clock, MapPin, Users, Star, Sparkles, Utensils, Music, CreditCard, Mail } from "lucide-react";
 
 // Updated: Project synced to GitHub $(date)
 
@@ -159,6 +159,9 @@ const PartyInvitation = () => {
       {/* Party Details */}
       <PartyDetails />
       
+      {/* Event Details Section */}
+      <EventDetails />
+      
       {/* RSVP Form */}
       <RSVPForm 
         formData={formData}
@@ -231,6 +234,166 @@ const HeroSection = ({ titleScale, onScrollToForm }: { titleScale: any, onScroll
         </motion.div>
       </motion.div>
     </section>
+  );
+};
+
+// Event Details Component
+const EventDetails = () => {
+  return (
+    <motion.section 
+      className="py-20 px-4"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 0.8 }}
+      viewport={{ once: true }}
+    >
+      <div className="max-w-4xl mx-auto">
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-party-blue to-party-blue-light mb-6">
+            Eventdetaljer
+          </h2>
+          <p className="text-xl text-muted-foreground">
+            Alt du trenger å vite om Transcom Julebord 2025
+          </p>
+        </motion.div>
+
+        <div className="grid md:grid-cols-2 gap-8 mb-12">
+          {/* Venue & Food */}
+          <motion.div
+            className="bg-card/50 backdrop-blur-sm rounded-2xl p-8 border border-party-blue/20"
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <div className="flex items-center mb-6">
+              <MapPin className="w-8 h-8 text-party-blue mr-4" />
+              <h3 className="text-2xl font-bold text-foreground">Sted & Mat</h3>
+            </div>
+            <div className="space-y-4 text-muted-foreground">
+              <p className="flex items-start">
+                <Utensils className="w-5 h-5 text-party-blue mr-3 mt-1 flex-shrink-0" />
+                <span><strong className="text-foreground">City Scene</strong> - Vi møtes på City scene</span>
+              </p>
+              <p className="flex items-start">
+                <Utensils className="w-5 h-5 text-party-blue mr-3 mt-1 flex-shrink-0" />
+                <span>3-retters middag servert til alle</span>
+              </p>
+              <p className="flex items-start">
+                <Utensils className="w-5 h-5 text-party-blue mr-3 mt-1 flex-shrink-0" />
+                <span>2 drikkebonger per person</span>
+              </p>
+              <p className="flex items-start">
+                <Users className="w-5 h-5 text-party-blue mr-3 mt-1 flex-shrink-0" />
+                <span>Bordplassering per team - alle sitter teamvis</span>
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Entertainment */}
+          <motion.div
+            className="bg-card/50 backdrop-blur-sm rounded-2xl p-8 border border-party-blue/20"
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            viewport={{ once: true }}
+          >
+            <div className="flex items-center mb-6">
+              <Music className="w-8 h-8 text-party-blue mr-4" />
+              <h3 className="text-2xl font-bold text-foreground">Underholdning</h3>
+            </div>
+            <div className="space-y-4 text-muted-foreground">
+              <p className="flex items-start">
+                <Star className="w-5 h-5 text-party-blue mr-3 mt-1 flex-shrink-0" />
+                <span><strong className="text-foreground">Forrykende show</strong> under middagen</span>
+              </p>
+              <p className="flex items-start">
+                <Music className="w-5 h-5 text-party-blue mr-3 mt-1 flex-shrink-0" />
+                <span>DJ resten av kvelden etter showet</span>
+              </p>
+              <p className="flex items-start">
+                <Sparkles className="w-5 h-5 text-party-blue mr-3 mt-1 flex-shrink-0" />
+                <span>Festlig atmosfære hele kvelden</span>
+              </p>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Payment & Registration */}
+        <motion.div
+          className="bg-gradient-to-r from-party-blue/10 to-party-blue-light/10 backdrop-blur-sm rounded-2xl p-8 border border-party-blue/30"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <div className="text-center mb-8">
+            <h3 className="text-3xl font-bold text-foreground mb-4">Påmelding & Betaling</h3>
+            <p className="text-lg text-muted-foreground">Viktig informasjon om påmelding og betaling</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="space-y-6">
+              <div className="flex items-start">
+                <CreditCard className="w-6 h-6 text-party-blue mr-4 mt-1 flex-shrink-0" />
+                <div>
+                  <h4 className="text-xl font-semibold text-foreground mb-2">Kostnad</h4>
+                  <p className="text-muted-foreground">
+                    <strong className="text-foreground">200 kr per person</strong><br />
+                    <span className="text-sm">Bindende påmelding - hvis du ikke møter opp blir du trukket 1200 kr i lønn</span>
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start">
+                <Calendar className="w-6 h-6 text-party-blue mr-4 mt-1 flex-shrink-0" />
+                <div>
+                  <h4 className="text-xl font-semibold text-foreground mb-2">Frist</h4>
+                  <p className="text-muted-foreground">
+                    <strong className="text-foreground">17. oktober</strong><br />
+                    Påmeldings- og betalingsfrist
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-6">
+              <div className="flex items-start">
+                <Mail className="w-6 h-6 text-party-blue mr-4 mt-1 flex-shrink-0" />
+                <div>
+                  <h4 className="text-xl font-semibold text-foreground mb-2">Betaling til</h4>
+                  <p className="text-muted-foreground">
+                    <strong className="text-foreground">Aina Koteng</strong><br />
+                    <span className="text-sm">Kontant, kort eller Vipps</span>
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-background/50 rounded-lg p-4 border border-party-blue/20">
+                <h4 className="text-lg font-semibold text-foreground mb-2">Vipps</h4>
+                <p className="text-muted-foreground text-sm">
+                  <strong>909 54 328</strong><br />
+                  Send også e-post til <strong>aina.koteng@transcom.com</strong> dersom du vippser
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-8 text-center">
+            <p className="text-muted-foreground italic">
+              Med vennlig hilsen<br />
+              <strong className="text-foreground">Festkomiteen</strong>
+            </p>
+          </div>
+        </motion.div>
+      </div>
+    </motion.section>
   );
 };
 
