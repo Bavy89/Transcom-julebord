@@ -569,9 +569,6 @@ const EventDetails = () => {
             </Button>
           </div>
 
-          <p className="text-center text-muted-foreground text-sm mt-6">
-            Stemmene telles opp under julebordet! 🗳️
-          </p>
         </motion.div>
       </div>
     </motion.section>
