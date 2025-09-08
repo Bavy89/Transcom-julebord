@@ -537,8 +537,8 @@ const EventDetails = () => {
           viewport={{ once: true }}
         >
           <div className="text-center mb-8">
-            <h3 className="text-3xl font-bold text-foreground mb-4">Årets Utmerkelser</h3>
-            <p className="text-lg text-muted-foreground">Stem på dine favoritter for årets julebord!</p>
+            <h3 className="text-3xl font-bold text-foreground mb-4">Årets Helter</h3>
+            <p className="text-lg text-muted-foreground">Stem på dine favoritter for årets Transcom Awards!</p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
@@ -565,7 +565,7 @@ const EventDetails = () => {
               }}
             >
               <Users className="w-6 h-6 mr-3" />
-              Stem på Årets Transcom
+              Stem på Årets Transcomer
             </Button>
           </div>
 
