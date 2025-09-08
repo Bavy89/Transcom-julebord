@@ -3,6 +3,11 @@ function doPost(e) {
     // Get the active spreadsheet and sheet
     var ss = SpreadsheetApp.openById('163iKmKo-OWJ_fLTO3NzbUsuXr0Ksx3xzQDShX8_WeCk');
     var sheet = ss.getSheetByName('Ark 1');
+    
+    // Fallback to active sheet if 'Ark 1' doesn't exist
+    if (!sheet) {
+      sheet = ss.getActiveSheet();
+    }
 
     // Parse the incoming data
     var data = JSON.parse(e.postData.contents);
