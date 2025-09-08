@@ -249,19 +249,9 @@ const EventDetails = () => {
   const handleCopyNumber = async () => {
     try {
       await navigator.clipboard.writeText('90954328');
-      toast({
-        title: "Nummer kopiert! 📋",
-        description: "Vipps nummer 909 54 328 er kopiert til utklippstavlen",
-        className: "toast-success-large",
-        duration: 3000,
-      });
+      console.log('Vipps nummer kopiert: 90954328');
     } catch (err) {
       console.error('Kunne ikke kopiere nummer:', err);
-      toast({
-        title: "Kunne ikke kopiere",
-        description: "Prøv å skrive nummeret manuelt: 909 54 328",
-        variant: "destructive"
-      });
     }
   };
   return (
