@@ -18,7 +18,7 @@ interface FormData {
   isNegotia: boolean;
 }
 
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz18cnNrdghiKd-sTO5hUdxFLYQOKyBE5XUMLToeE0NshDhTiIVEBMxcfJxUnAYNxRzjQ/exec";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxV-T4ZILnmgB2JPHkiOzzDlXqj_LPo1c2CtN1TGZxsmjT1PnpLagx-Lga2k06Kcbu08g/exec";
 
 const PartyInvitation = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -94,7 +94,7 @@ const PartyInvitation = () => {
       
       toast({
         title: "🎉 WOW! Du er meldt på! 🎉",
-        description: `Tusen takk ${formData.name}! Vi gleder oss til å se deg på Transcom Julebord 2025! 🎄✨`,
+        description: `Tusen takk ${formData.name}! Vi gleder oss til å se deg på Transcom Awards 2025! 🎄✨`,
         className: "toast-success-large",
         duration: 8000,
       });
