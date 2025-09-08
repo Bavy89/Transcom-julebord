@@ -416,12 +416,6 @@ const EventDetails = () => {
             </div>
           </div>
 
-          <div className="mt-8 text-center">
-            <p className="text-muted-foreground italic">
-              Med vennlig hilsen<br />
-              <strong className="text-foreground">Festkomiteen</strong>
-            </p>
-          </div>
         </motion.div>
       </div>
     </motion.section>
@@ -730,10 +724,18 @@ const Footer = () => {
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.8 }}
       >
-        <p className="text-lg text-muted-foreground mb-4">
+        <p className="text-lg text-muted-foreground mb-6">
           Vi gleder oss til å se deg der! 🎉
         </p>
-        <div className="flex justify-center space-x-4">
+        
+        <div className="mt-8 pt-6 border-t border-party-blue/20">
+          <p className="text-muted-foreground italic">
+            Med vennlig hilsen<br />
+            <strong className="text-foreground text-lg">Festkomiteen</strong>
+          </p>
+        </div>
+        
+        <div className="flex justify-center space-x-4 mt-6">
           <Sparkles className="w-6 h-6 text-party-blue animate-party-bounce" />
           <Star className="w-6 h-6 text-party-blue animate-float" />
           <Sparkles className="w-6 h-6 text-party-blue animate-party-bounce" />
