@@ -269,10 +269,10 @@ const ImageGallery = () => {
           viewport={{ once: true }}
         >
           <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-party-blue to-party-blue-light mb-6">
-            Vårt Team
+            Minner fra i fjor 🎉
           </h2>
           <p className="text-xl text-muted-foreground">
-            Se bilder fra våre fantastiske arrangementer og arbeidsplass
+            Se bilder fra vår fantastiske julefeiring i 2024
           </p>
         </motion.div>
 
@@ -290,7 +290,7 @@ const ImageGallery = () => {
               <div className="aspect-square rounded-xl overflow-hidden bg-gradient-to-br from-party-blue/20 to-party-blue-light/20 border border-party-blue/30">
                 <img
                   src={image}
-                  alt={`Transcom team bilde ${index + 1}`}
+                  alt={`Julebord 2024 bilde ${index + 1}`}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                   onError={(e) => {
                     // Fallback hvis bildet ikke finnes
@@ -298,9 +298,9 @@ const ImageGallery = () => {
                   }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="absolute bottom-2 left-2 right-2 text-white text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  Transcom Team
-                </div>
+                  <div className="absolute bottom-2 left-2 right-2 text-white text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    Julebord 2024
+                  </div>
               </div>
             </motion.div>
           ))}
@@ -314,7 +314,7 @@ const ImageGallery = () => {
           viewport={{ once: true }}
         >
           <p className="text-muted-foreground">
-            Flotte bilder fra vårt team og arrangementer! 🎉
+            Gleder dere til å lage nye minner i år? 🎊
           </p>
         </motion.div>
       </div>
