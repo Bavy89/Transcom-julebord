@@ -415,25 +415,26 @@ const EventDetails = () => {
               <div className="bg-background/50 rounded-lg p-4 border border-party-blue/20">
                 <h4 className="text-lg font-semibold text-foreground mb-3">Vipps</h4>
                 <div className="space-y-3">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="w-full bg-orange-500 border-orange-500 text-white hover:bg-orange-600 hover:border-orange-600 font-semibold"
-                    onClick={handleVippsClick}
-                  >
-                    <CreditCard className="w-4 h-4 mr-2" />
-                    Åpne Vipps
-                  </Button>
-                  
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="w-full bg-gray-500 border-gray-500 text-white hover:bg-gray-600 hover:border-gray-600 font-semibold"
-                    onClick={handleCopyNumber}
-                  >
-                    <Copy className="w-4 h-4 mr-2" />
-                    Kopier nummer: 909 54 328
-                  </Button>
+                  <div className="flex gap-2">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="flex-1 bg-orange-500 border-orange-500 text-white hover:bg-orange-600 hover:border-orange-600 font-semibold"
+                      onClick={handleVippsClick}
+                    >
+                      <CreditCard className="w-4 h-4 mr-2" />
+                      Åpne Vipps
+                    </Button>
+                    
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="w-1/4 bg-gray-500 border-gray-500 text-white hover:bg-gray-600 hover:border-gray-600 font-semibold"
+                      onClick={handleCopyNumber}
+                    >
+                      <Copy className="w-4 h-4" />
+                    </Button>
+                  </div>
                   
                   <Button
                     variant="outline"
