@@ -429,7 +429,10 @@ const EventDetails = () => {
                   <Button
                     variant="outline"
                     size="sm"
-                    className="w-full bg-red-500 border-red-500 text-white hover:bg-red-600 hover:border-red-600 font-semibold"
+                    className="w-full bg-white border-2 text-gray-800 hover:bg-gray-50 font-semibold"
+                    style={{
+                      borderImage: 'linear-gradient(45deg, #EA4335 0%, #FBBC04 25%, #34A853 50%, #4285F4 75%, #EA4335 100%) 1'
+                    }}
                     onClick={() => window.open('mailto:aina.koteng@transcom.com?subject=Transcom Awards - Betaling', '_blank')}
                   >
                     <Mail className="w-4 h-4 mr-2" />
