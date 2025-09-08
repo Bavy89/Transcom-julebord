@@ -408,7 +408,7 @@ const EventDetails = () => {
                     variant="outline"
                     size="sm"
                     className="w-full bg-red-500 border-red-500 text-white hover:bg-red-600 hover:border-red-600 font-semibold"
-                    onClick={() => window.open('mailto:aina.koteng@transcom.com?subject=Transcom Julebord 2025 - Betaling', '_blank')}
+                    onClick={() => window.open('mailto:aina.koteng@transcom.com?subject=Transcom Awards - Betaling', '_blank')}
                   >
                     <Mail className="w-4 h-4 mr-2" />
                     Send e-post til Aina
