@@ -242,16 +242,15 @@ const HeroSection = ({ titleScale, onScrollToForm }: { titleScale: any, onScroll
 
 // Image Gallery Component
 const ImageGallery = () => {
-  // Liste over bilder som skal vises i collagen
+  // Liste over bilder som skal vises i collagen - bruker de faktiske bildene du har lastet opp
   const images = [
-    '/images/team1.jpg',
-    '/images/party1.jpg', 
-    '/images/office1.jpg',
-    '/images/celebration1.jpg',
-    '/images/team2.jpg',
-    '/images/party2.jpg',
-    '/images/office2.jpg',
-    '/images/celebration2.jpg'
+    '/images/unnamed.jpg',
+    '/images/unnamed (1).jpg',
+    '/images/unnamed (2).jpg',
+    '/images/unnamed (3).jpg',
+    '/images/unnamed (4).jpg',
+    '/images/unnamed (5).jpg',
+    '/images/unnamed (6).jpg'
   ];
 
   return (
@@ -278,7 +277,7 @@ const ImageGallery = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {images.map((image, index) => (
             <motion.div
               key={index}
@@ -316,7 +315,7 @@ const ImageGallery = () => {
           viewport={{ once: true }}
         >
           <p className="text-muted-foreground">
-            Legg inn dine egne bilder i <code className="bg-background/50 px-2 py-1 rounded text-party-blue">/public/images/</code> mappen
+            Flotte bilder fra vårt team og arrangementer! 🎉
           </p>
         </motion.div>
       </div>
