@@ -240,7 +240,7 @@ const HeroSection = ({ titleScale, onScrollToForm }: { titleScale: any, onScroll
 // Event Details Component
 const EventDetails = () => {
   const handleVippsClick = () => {
-    // Åpne Vipps-appen direkte
+    // Enkel løsning: åpne Vipps-appen
     window.location.href = 'vipps://';
   };
   return (
@@ -415,7 +415,7 @@ const EventDetails = () => {
                   </Button>
                   
                   <p className="text-muted-foreground text-sm">
-                    Send også e-post til <strong>aina.koteng@transcom.com</strong> dersom du vippser
+                    Send e-post til <strong>aina.koteng@transcom.com</strong> dersom du vippser
                   </p>
                 </div>
               </div>
