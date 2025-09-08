@@ -272,7 +272,7 @@ const ImageGallery = () => {
             Minner fra i fjor 🎉
           </h2>
           <p className="text-xl text-muted-foreground">
-            Se bilder fra vår fantastiske julefeiring i 2024
+            Se bilder fra våre tidligere feiringer!
           </p>
         </motion.div>
 
