@@ -286,7 +286,7 @@ const EventDetails = () => {
                     variant="outline"
                     size="sm"
                     className="mt-2 bg-party-blue/10 border-party-blue/30 text-party-blue hover:bg-party-blue/20"
-                    onClick={() => window.open('https://maps.google.com/?q=City+Scene+Oslo', '_blank')}
+                    onClick={() => window.open('https://maps.google.com/?q=City+Scene+Fredrikstad', '_blank')}
                   >
                     <MapPin className="w-4 h-4 mr-2" />
                     Åpne i Google Maps
