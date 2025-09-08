@@ -18,7 +18,7 @@ interface FormData {
   isNegotia: boolean;
 }
 
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxV-T4ZILnmgB2JPHkiOzzDlXqj_LPo1c2CtN1TGZxsmjT1PnpLagx-Lga2k06Kcbu08g/exec";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyGA-vJEEv0BNMpW3k5pr5SGEPmkt92l8c3lROiuwqG-HUOTCEvMmGh3dcMuEOf_Jn_lg/exec";
 
 const PartyInvitation = () => {
   const containerRef = useRef<HTMLDivElement>(null);
