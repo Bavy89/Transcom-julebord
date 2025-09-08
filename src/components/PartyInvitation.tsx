@@ -4,7 +4,7 @@ import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
-import { Calendar, Clock, MapPin, Users, Star, Sparkles, Utensils, Music, CreditCard, Mail, Copy } from "lucide-react";
+import { Calendar, Clock, MapPin, Users, Star, Sparkles, Utensils, Music, CreditCard, Mail } from "lucide-react";
 
 // Updated: Project synced to GitHub $(date)
 
@@ -339,15 +339,10 @@ const ImageGallery = () => {
 const EventDetails = () => {
   const { toast } = useToast();
 
-  const handleVippsClick = () => {
-    // Enkel løsning: åpne Vipps-appen
-    window.location.href = 'vipps://';
-  };
-
-  const handleCopyNumber = async () => {
+  const handleVippsClick = async () => {
     try {
-      await navigator.clipboard.writeText('90954328');
-      console.log('Vipps nummer kopiert: 90954328');
+      await navigator.clipboard.writeText('909 54 328');
+      console.log('Vipps nummer kopiert: 909 54 328');
     } catch (err) {
       console.error('Kunne ikke kopiere nummer:', err);
     }
@@ -503,26 +498,15 @@ const EventDetails = () => {
               <div className="bg-background/50 rounded-lg p-4 border border-party-blue/20">
                 <h4 className="text-lg font-semibold text-foreground mb-3">Vipps</h4>
                 <div className="space-y-3">
-                  <div className="flex gap-2">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="flex-1 bg-orange-500 border-orange-500 text-white hover:bg-orange-600 hover:border-orange-600 font-semibold"
-                      onClick={handleVippsClick}
-                    >
-                      <CreditCard className="w-4 h-4 mr-2" />
-                      Åpne Vipps
-                    </Button>
-                    
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="w-1/4 bg-gray-500 border-gray-500 text-white hover:bg-gray-600 hover:border-gray-600 font-semibold"
-                      onClick={handleCopyNumber}
-                    >
-                      <Copy className="w-4 h-4" />
-                    </Button>
-                  </div>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="w-full bg-orange-500 border-orange-500 text-white hover:bg-orange-600 hover:border-orange-600 font-semibold"
+                    onClick={handleVippsClick}
+                  >
+                    <CreditCard className="w-4 h-4 mr-2" />
+                    Kopier Vipps nummer: 909 54 328
+                  </Button>
                   
                   <Button
                     variant="outline"
