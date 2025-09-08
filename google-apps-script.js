@@ -2,9 +2,14 @@ function doPost(e) {
   try {
     // Get the active spreadsheet and sheet
     var ss = SpreadsheetApp.openById('163iKmKo-OWJ_fLTO3NzbUsuXr0Ksx3xzQDShX8_WeCk');
-    var sheet = ss.getSheetByName('Ark 1');
+    var sheet = ss.getSheetByName('Transcom Awards 2025 påmeldinger');
     
-    // Fallback to active sheet if 'Ark 1' doesn't exist
+    // Fallback to 'Ark 1' if the main sheet doesn't exist
+    if (!sheet) {
+      sheet = ss.getSheetByName('Ark 1');
+    }
+    
+    // Final fallback to active sheet
     if (!sheet) {
       sheet = ss.getActiveSheet();
     }
