@@ -402,7 +402,7 @@ const EventDetails = () => {
                   <Button
                     variant="outline"
                     size="sm"
-                    className="w-full bg-green-500/10 border-green-500/30 text-green-400 hover:bg-green-500/20"
+                    className="w-full bg-orange-500 border-orange-500 text-white hover:bg-orange-600 hover:border-orange-600 font-semibold"
                     onClick={() => window.open('https://vipps.no/send-payment/?phone=90954328', '_blank')}
                   >
                     <CreditCard className="w-4 h-4 mr-2" />
