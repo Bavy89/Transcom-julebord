@@ -19,7 +19,7 @@ interface FormData {
   teamLeader: string;
 }
 
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx1eauQ8qVzytB2Qwu_f89--uYfYMA7o-xjGarVNb2_JdUSIiISxesFK1OOSE77sBg/exec";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzsYhPYOC94hFoQyh4vuT1tRh4cQDO2TJLQbycoERiN-EDgSmmd85iumnBxsiwU-bqZMA/exec";
 
 const PartyInvitation = () => {
   const containerRef = useRef<HTMLDivElement>(null);
