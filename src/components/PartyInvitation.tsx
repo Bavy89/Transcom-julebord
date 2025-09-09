@@ -706,6 +706,7 @@ const RSVPForm = ({
                 >
                   <option value="">Velg teamleder</option>
                   <option value="Said">Said</option>
+                  <option value="Said">Stig</option>
                   <option value="Maikel">Maikel</option>
                   <option value="Torkild">Torkild</option>
                   <option value="Granit">Granit</option>
