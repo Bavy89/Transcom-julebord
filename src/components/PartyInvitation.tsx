@@ -16,6 +16,7 @@ interface FormData {
   allergyComment: string;
   isELogIT: boolean;
   isNegotia: boolean;
+  teamLeader: string;
 }
 
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyE2LK1hKjydqsM424T0CcybIM9C-qfMeJxx4ya1fxsN96N7rdUBDaEweYqErNLirlRAQ/exec";
@@ -38,7 +39,8 @@ const PartyInvitation = () => {
     hasAllergies: false,
     allergyComment: "",
     isELogIT: false,
-    isNegotia: false
+    isNegotia: false,
+    teamLeader: ""
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -120,7 +122,7 @@ const PartyInvitation = () => {
     }
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;
     const checked = 'checked' in e.target ? e.target.checked : false;
     setFormData(prev => ({
@@ -584,7 +586,7 @@ const RSVPForm = ({
   isSubmitting
 }: {
   formData: FormData;
-  handleInputChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  handleInputChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void;
   handleSubmit: (e: React.FormEvent) => void;
   formSectionRef: React.RefObject<HTMLElement>;
   isSubmitting: boolean;
@@ -776,6 +778,42 @@ const RSVPForm = ({
                   <label htmlFor="isNegotia" className="text-sm font-medium text-foreground cursor-pointer">
                     Jeg er medlem av Negotia
                   </label>
+                </motion.div>
+
+                <motion.div
+                  className="p-3 bg-background/30 rounded-lg border border-party-blue/20"
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <label htmlFor="teamLeader" className="block text-sm font-medium text-foreground mb-2">
+                    Teamleder
+                  </label>
+                  <select
+                    id="teamLeader"
+                    name="teamLeader"
+                    value={formData.teamLeader}
+                    onChange={handleInputChange}
+                    className="w-full p-3 bg-background/50 border border-party-blue/30 focus:border-party-blue rounded-xl text-foreground focus:ring-2 focus:ring-party-blue/20"
+                  >
+                    <option value="">Velg teamleder</option>
+                    <option value="Said">Said</option>
+                    <option value="Maikel">Maikel</option>
+                    <option value="Torkild">Torkild</option>
+                    <option value="Granit">Granit</option>
+                    <option value="Roar">Roar</option>
+                    <option value="Lars Andreas">Lars Andreas</option>
+                    <option value="Shirko">Shirko</option>
+                    <option value="Kenneth J">Kenneth J</option>
+                    <option value="Jonas">Jonas</option>
+                    <option value="Thomas">Thomas</option>
+                    <option value="Hanne">Hanne</option>
+                    <option value="Liss">Liss</option>
+                    <option value="Mona">Mona</option>
+                    <option value="Ketil">Ketil</option>
+                    <option value="Espen">Espen</option>
+                    <option value="Åsrun">Åsrun</option>
+                    <option value="Admin">Admin</option>
+                  </select>
                 </motion.div>
               </div>
             </motion.div>
