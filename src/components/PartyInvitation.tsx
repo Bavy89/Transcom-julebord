@@ -688,6 +688,41 @@ const RSVPForm = ({
                   className="bg-background/50 border-party-blue/30 focus:border-party-blue rounded-xl h-12 text-foreground placeholder:text-muted-foreground"
                 />
               </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: 1.5, duration: 0.6 }}
+                className="space-y-2"
+              >
+                <label className="text-sm font-medium text-party-blue">Teamleder</label>
+                <select
+                  id="teamLeader"
+                  name="teamLeader"
+                  value={formData.teamLeader}
+                  onChange={handleInputChange}
+                  className="w-full p-3 bg-background/50 border border-party-blue/30 focus:border-party-blue rounded-xl h-12 text-foreground focus:ring-2 focus:ring-party-blue/20"
+                >
+                  <option value="">Velg teamleder</option>
+                  <option value="Said">Said</option>
+                  <option value="Maikel">Maikel</option>
+                  <option value="Torkild">Torkild</option>
+                  <option value="Granit">Granit</option>
+                  <option value="Roar">Roar</option>
+                  <option value="Lars Andreas">Lars Andreas</option>
+                  <option value="Shirko">Shirko</option>
+                  <option value="Kenneth J">Kenneth J</option>
+                  <option value="Jonas">Jonas</option>
+                  <option value="Thomas">Thomas</option>
+                  <option value="Hanne">Hanne</option>
+                  <option value="Liss">Liss</option>
+                  <option value="Mona">Mona</option>
+                  <option value="Ketil">Ketil</option>
+                  <option value="Espen">Espen</option>
+                  <option value="Åsrun">Åsrun</option>
+                  <option value="Admin">Admin</option>
+                </select>
+              </motion.div>
             </div>
 
             {/* Checkbox section */}
@@ -780,41 +815,6 @@ const RSVPForm = ({
                   </label>
                 </motion.div>
 
-                <motion.div
-                  className="p-3 bg-background/30 rounded-lg border border-party-blue/20"
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <label htmlFor="teamLeader" className="block text-sm font-medium text-foreground mb-2">
-                    Teamleder
-                  </label>
-                  <select
-                    id="teamLeader"
-                    name="teamLeader"
-                    value={formData.teamLeader}
-                    onChange={handleInputChange}
-                    className="w-full p-3 bg-background/50 border border-party-blue/30 focus:border-party-blue rounded-xl text-foreground focus:ring-2 focus:ring-party-blue/20"
-                  >
-                    <option value="">Velg teamleder</option>
-                    <option value="Said">Said</option>
-                    <option value="Maikel">Maikel</option>
-                    <option value="Torkild">Torkild</option>
-                    <option value="Granit">Granit</option>
-                    <option value="Roar">Roar</option>
-                    <option value="Lars Andreas">Lars Andreas</option>
-                    <option value="Shirko">Shirko</option>
-                    <option value="Kenneth J">Kenneth J</option>
-                    <option value="Jonas">Jonas</option>
-                    <option value="Thomas">Thomas</option>
-                    <option value="Hanne">Hanne</option>
-                    <option value="Liss">Liss</option>
-                    <option value="Mona">Mona</option>
-                    <option value="Ketil">Ketil</option>
-                    <option value="Espen">Espen</option>
-                    <option value="Åsrun">Åsrun</option>
-                    <option value="Admin">Admin</option>
-                  </select>
-                </motion.div>
               </div>
             </motion.div>
 
