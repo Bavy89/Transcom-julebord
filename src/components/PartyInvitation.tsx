@@ -86,7 +86,8 @@ const PartyInvitation = () => {
           hasAllergies: formData.hasAllergies,
           allergyComment: formData.allergyComment,
           isELogIT: formData.isELogIT,
-          isNegotia: formData.isNegotia
+          isNegotia: formData.isNegotia,
+          teamLeader: formData.teamLeader
         }),
       });
       
