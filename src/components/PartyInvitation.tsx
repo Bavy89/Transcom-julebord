@@ -547,7 +547,7 @@ const EventDetails = () => {
               size="lg"
               className="h-14 sm:h-16 bg-gradient-to-r from-amber-500/20 to-yellow-500/20 border-amber-500/50 text-foreground hover:from-amber-500/30 hover:to-yellow-500/30 hover:border-amber-500/70 font-semibold text-sm sm:text-lg px-3 sm:px-6"
               onClick={() => {
-                window.open('https://docs.google.com/forms/d/e/1FAIpQLSfWAdahUldVbovK0zYmFuembKcTh3PQ6g_cK8wCVxVhwoIhow/viewform?usp=sharing&ouid=109777289333045991690', '_blank');
+                window.open('https://docs.google.com/forms/d/e/1FAIpQLSdn_qkWpI_jTnmLt_4hlw9br0-wqKp-cZ6OZ6Elm3xTQ2Sj7g/viewform', '_blank');
               }}
             >
               <Star className="w-5 h-5 sm:w-6 sm:h-6 mr-2 sm:mr-3" />
