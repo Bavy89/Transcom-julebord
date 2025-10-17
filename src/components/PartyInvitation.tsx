@@ -866,7 +866,7 @@ const PartyDetails = () => {
     {
       icon: Clock,
       title: "Tid",
-      info: "18:00 - 23:00"
+      info: "18:30 - 23:00"
     },
     {
       icon: MapPin,
