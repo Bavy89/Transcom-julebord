@@ -1,6 +1,5 @@
 import { defineConfig } from "vite";
-// Updated: Project synced to GitHub $(date)
-import react from "@vitejs/plugin-react-swc";
+import react from "@vitejs/plugin-react";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
 
