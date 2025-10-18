@@ -1,0 +1,163 @@
+@tailwind base;
+/* Updated: Project synced to GitHub $(date) */
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Party Theme - Sophisticated Black & Blue */
+    --background: 220 25% 4%;
+    --foreground: 215 100% 95%;
+
+    --card: 220 30% 8%;
+    --card-foreground: 215 100% 95%;
+
+    --popover: 220 30% 8%;
+    --popover-foreground: 215 100% 95%;
+
+    --primary: 215 100% 60%;
+    --primary-foreground: 220 25% 4%;
+
+    --secondary: 220 20% 12%;
+    --secondary-foreground: 215 100% 95%;
+
+    --muted: 220 20% 15%;
+    --muted-foreground: 215 30% 70%;
+
+    --accent: 215 100% 70%;
+    --accent-foreground: 220 25% 4%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 20% 20%;
+    --input: 220 20% 15%;
+    --ring: 215 100% 60%;
+
+    --radius: 1rem;
+
+    /* Party-specific colors */
+    --party-blue: 215 100% 60%;
+    --party-blue-light: 215 100% 70%;
+    --party-blue-dark: 215 100% 50%;
+    --party-black: 220 25% 4%;
+    --party-dark: 220 30% 8%;
+    --party-glow: 215 100% 60%;
+
+    /* Gradients */
+    --gradient-party: linear-gradient(135deg, hsl(215 100% 60%) 0%, hsl(220 25% 4%) 100%);
+    --gradient-glow: radial-gradient(circle at center, hsl(215 100% 60% / 0.3) 0%, transparent 70%);
+    --gradient-text: linear-gradient(135deg, hsl(215 100% 70%) 0%, hsl(215 100% 90%) 100%);
+
+    /* Shadows */
+    --shadow-glow: 0 0 50px hsl(215 100% 60% / 0.5);
+    --shadow-card: 0 25px 50px -12px hsl(220 25% 4% / 0.8);
+    
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom styles for large success toast */
+.toast-success-large {
+  @apply fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[9999] !important;
+  @apply w-[90vw] max-w-2xl mx-auto !important;
+  @apply min-h-[200px] !important;
+  @apply text-center !important;
+  @apply bg-gradient-to-br from-slate-900 via-slate-800 to-blue-900 !important;
+  @apply text-white !important;
+  @apply border border-blue-500/30 !important;
+  @apply shadow-2xl !important;
+  @apply rounded-2xl !important;
+  @apply p-8 !important;
+}
+
+.toast-success-large .toast-title {
+  @apply text-3xl md:text-4xl font-black !important;
+  @apply mb-4 !important;
+  @apply text-center !important;
+  @apply bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent !important;
+  @apply drop-shadow-lg !important;
+}
+
+.toast-success-large .toast-description {
+  @apply text-lg md:text-xl !important;
+  @apply text-white/90 !important;
+  @apply leading-relaxed !important;
+  @apply drop-shadow-md !important;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 640px) {
+  .toast-success-large {
+    @apply w-[95vw] !important;
+    @apply min-h-[250px] !important;
+    @apply p-6 !important;
+  }
+  
+  .toast-success-large .toast-title {
+    @apply text-2xl !important;
+  }
+  
+  .toast-success-large .toast-description {
+    @apply text-lg !important;
+  }
+}
