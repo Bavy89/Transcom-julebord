@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Calendar, Clock, MapPin, Users, Star, Sparkles, Utensils, Music } from "lucide-react";
 import InstallPWA from "@/components/InstallPWA";
+import NavigationMenu from "@/components/NavigationMenu";
 
 // Updated: Project synced to GitHub $(date)
 
@@ -64,6 +65,9 @@ const PartyInvitation = () => {
       {/* Footer */}
       <Footer />
       
+      {/* Navigation Menu */}
+      <NavigationMenu />
+      
       {/* PWA Install Button */}
       <InstallPWA />
     </div>
@@ -85,6 +89,7 @@ const ImageGallery = () => {
 
   return (
     <motion.section 
+      id="gallery"
       className="py-20 px-4"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
@@ -192,6 +197,7 @@ const NomineesSection = () => {
 
   return (
     <motion.section 
+      id="nominees"
       ref={nomineesRef}
       className="py-20 px-4"
       initial={{ opacity: 0 }}
@@ -264,6 +270,7 @@ const NomineesSection = () => {
 const EventDetails = () => {
   return (
     <motion.section 
+      id="event-details"
       className="py-20 px-4"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
@@ -395,7 +402,7 @@ const PartyDetails = () => {
   ];
 
   return (
-    <section ref={detailsRef} className="py-20 px-6">
+    <section id="party-details" ref={detailsRef} className="py-20 px-6">
       <motion.div
         className="max-w-6xl mx-auto"
         initial={{ opacity: 0 }}
