@@ -251,22 +251,6 @@ const NomineesSection = () => {
           ))}
         </div>
 
-        <motion.div
-          className="text-center mt-12"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          viewport={{ once: true }}
-        >
-          <div className="bg-gradient-to-r from-amber-500/10 to-yellow-500/10 backdrop-blur-sm rounded-2xl p-8 border border-amber-500/30">
-            <h3 className="text-2xl font-bold text-foreground mb-4">
-              🎉 Lykke til alle nominerte! 🎉
-            </h3>
-            <p className="text-muted-foreground text-lg">
-              Vinnerne avsløres under Transcom Awards 2025
-            </p>
-          </div>
-        </motion.div>
       </div>
     </motion.section>
   );
