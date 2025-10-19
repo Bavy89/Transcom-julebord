@@ -244,48 +244,6 @@ const EventDetails = () => {
         </div>
 
 
-        {/* Voting Section */}
-        <motion.div
-          className="bg-gradient-to-r from-amber-500/10 to-yellow-500/10 backdrop-blur-sm rounded-2xl p-8 border border-amber-500/30 mt-8"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <div className="text-center mb-8">
-            <h3 className="text-3xl font-bold text-foreground mb-4">Årets Helter</h3>
-            <p className="text-lg text-muted-foreground">Stem på dine favoritter for årets Transcom Awards!</p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 max-w-2xl mx-auto">
-            <Button
-              variant="outline"
-              size="lg"
-              className="h-14 sm:h-16 bg-gradient-to-r from-amber-500/20 to-yellow-500/20 border-amber-500/50 text-foreground hover:from-amber-500/30 hover:to-yellow-500/30 hover:border-amber-500/70 font-semibold text-sm sm:text-lg px-3 sm:px-6"
-              onClick={() => {
-                window.open('https://docs.google.com/forms/d/e/1FAIpQLSdn_qkWpI_jTnmLt_4hlw9br0-wqKp-cZ6OZ6Elm3xTQ2Sj7g/viewform', '_blank');
-              }}
-            >
-              <Star className="w-5 h-5 sm:w-6 sm:h-6 mr-2 sm:mr-3" />
-              <span className="hidden xs:inline">Stem på Årets Gledespreder</span>
-              <span className="xs:hidden">Årets Gledespreder</span>
-            </Button>
-
-            <Button
-              variant="outline"
-              size="lg"
-              className="h-14 sm:h-16 bg-gradient-to-r from-blue-500/20 to-indigo-500/20 border-blue-500/50 text-foreground hover:from-blue-500/30 hover:to-indigo-500/30 hover:border-blue-500/70 font-semibold text-sm sm:text-lg px-3 sm:px-6"
-              onClick={() => {
-                window.open('https://docs.google.com/forms/d/e/1FAIpQLSfWAdahUldVbovK0zYmFuembKcTh3PQ6g_cK8wCVxVhwoIhow/viewform?usp=sharing&ouid=109777289333045991690', '_blank');
-              }}
-            >
-              <Users className="w-5 h-5 sm:w-6 sm:h-6 mr-2 sm:mr-3" />
-              <span className="hidden xs:inline">Stem på Årets Transcomer</span>
-              <span className="xs:hidden">Årets Transcomer</span>
-            </Button>
-          </div>
-
-        </motion.div>
       </div>
     </motion.section>
   );
