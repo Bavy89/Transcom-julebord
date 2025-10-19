@@ -22,15 +22,10 @@ const NavigationMenu = () => {
 
   return (
     <>
-      {/* Debug info */}
-      <div className="fixed top-20 left-4 z-[80] bg-red-500 text-white p-2 text-xs">
-        Menu: {isOpen ? 'Open' : 'Closed'} | PWA: {supportsPWA ? 'Yes' : 'No'}
-      </div>
-
       {/* Hamburger Button - Sticky */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed top-6 right-6 z-[60] w-14 h-14 bg-gradient-to-r from-party-blue to-party-blue-light rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-transform"
+        className="fixed top-6 right-6 z-50 w-14 h-14 bg-gradient-to-r from-party-blue to-party-blue-light rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-transform"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
       >
@@ -61,7 +56,7 @@ const NavigationMenu = () => {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: -20 }}
               transition={{ duration: 0.3, ease: 'easeOut' }}
-              className="fixed top-24 right-6 z-[70] w-80 max-w-[calc(100vw-3rem)] bg-gradient-to-br from-gray-900 to-black rounded-2xl shadow-2xl border border-party-blue/30 overflow-hidden"
+              className="fixed top-24 right-6 z-50 w-80 max-w-[calc(100vw-3rem)] bg-gradient-to-br from-gray-900 to-black rounded-2xl shadow-2xl border border-party-blue/30 overflow-hidden"
             >
               {/* Header */}
               <div className="bg-gradient-to-r from-party-blue to-party-blue-light p-6">
