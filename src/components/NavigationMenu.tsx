@@ -66,12 +66,9 @@ const NavigationMenu = () => {
 
               {/* Menu Items */}
               <div className="p-4 space-y-2">
-                {menuItems.map((item, index) => (
-                  <motion.button
+                {menuItems.map((item) => (
+                  <button
                     key={item.id}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1, duration: 0.3 }}
                     onClick={() => scrollToSection(item.id)}
                     className="w-full flex items-center gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-party-blue/50 transition-all group"
                   >
@@ -79,7 +76,7 @@ const NavigationMenu = () => {
                       <item.icon className="w-5 h-5 text-white" />
                     </div>
                     <span className="text-white font-medium text-left">{item.label}</span>
-                  </motion.button>
+                  </button>
                 ))}
               </div>
 
