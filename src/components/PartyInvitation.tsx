@@ -54,11 +54,11 @@ const PartyInvitation = () => {
       {/* Event Details Section */}
       <EventDetails />
       
-      {/* Image Gallery Section */}
-      <ImageGallery />
-      
       {/* Nominees Section */}
       <NomineesSection />
+      
+      {/* Image Gallery Section */}
+      <ImageGallery />
       
       {/* Footer */}
       <Footer />
