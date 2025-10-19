@@ -61,7 +61,6 @@ const NavigationMenu = () => {
               {/* Header */}
               <div className="bg-gradient-to-r from-party-blue to-party-blue-light p-6">
                 <h2 className="text-2xl font-bold text-white">Meny</h2>
-                <p className="text-white/80 text-sm mt-1">Naviger til seksjoner</p>
               </div>
 
               {/* Menu Items */}
