@@ -178,11 +178,11 @@ const NomineesSection = () => {
     },
     {
       title: "Årets Hederspris",
-      nominees: ["?????????"]
+      nominees: ["Avsløres under festen"]
     },
     {
       title: "Årets Transcom'er",
-      nominees: ["?????????"]
+      nominees: ["Avsløres under festen"]
     }
   ];
 
