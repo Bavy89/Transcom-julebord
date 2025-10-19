@@ -84,7 +84,7 @@ const ImageGallery = () => {
       className="py-20 px-4"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
-      transition={{ duration: 0.8 }}
+      transition={{ duration: 0.4 }}
       viewport={{ once: true }}
     >
       <div className="max-w-6xl mx-auto">
@@ -92,7 +92,7 @@ const ImageGallery = () => {
           className="text-center mb-16"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.4 }}
           viewport={{ once: true }}
         >
           <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-party-blue to-party-blue-light mb-6">
@@ -110,7 +110,7 @@ const ImageGallery = () => {
               className="relative group cursor-pointer"
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
+              transition={{ duration: 0.2, delay: index * 0.05 }}
               viewport={{ once: true }}
               whileHover={{ scale: 1.05 }}
             >
@@ -134,7 +134,7 @@ const ImageGallery = () => {
           className="text-center mt-12"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
+          transition={{ duration: 0.3, delay: 0.2 }}
           viewport={{ once: true }}
         >
           <p className="text-muted-foreground">
@@ -192,7 +192,7 @@ const NomineesSection = () => {
       className="py-20 px-4"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
-      transition={{ duration: 0.8 }}
+      transition={{ duration: 0.4 }}
       viewport={{ once: true }}
     >
       <div className="max-w-6xl mx-auto">
@@ -200,7 +200,7 @@ const NomineesSection = () => {
           className="text-center mb-16"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.4 }}
           viewport={{ once: true }}
         >
           <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-party-blue to-party-blue-light mb-6">
@@ -218,7 +218,7 @@ const NomineesSection = () => {
               className="bg-card/50 backdrop-blur-sm rounded-2xl p-8 border border-party-blue/20 hover:shadow-card transition-all duration-300"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              transition={{ delay: categoryIndex * 0.15, duration: 0.6 }}
+              transition={{ delay: categoryIndex * 0.05, duration: 0.3 }}
               viewport={{ once: true }}
               whileHover={{ scale: 1.02 }}
             >
@@ -234,7 +234,7 @@ const NomineesSection = () => {
                       className="bg-background/30 rounded-lg p-4 border border-party-blue/10"
                       initial={{ opacity: 0 }}
                       whileInView={{ opacity: 1 }}
-                      transition={{ delay: (categoryIndex * 0.15) + (nomineeIndex * 0.1), duration: 0.4 }}
+                      transition={{ delay: (categoryIndex * 0.05) + (nomineeIndex * 0.03), duration: 0.2 }}
                       viewport={{ once: true }}
                     >
                       <div className="flex items-center justify-center">
@@ -263,7 +263,7 @@ const EventDetails = () => {
       className="py-20 px-4"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
-      transition={{ duration: 0.8 }}
+      transition={{ duration: 0.4 }}
       viewport={{ once: true }}
     >
       <div className="max-w-4xl mx-auto">
@@ -271,7 +271,7 @@ const EventDetails = () => {
           className="text-center mb-16"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.4 }}
           viewport={{ once: true }}
         >
           <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-party-blue to-party-blue-light mb-6">
@@ -288,7 +288,7 @@ const EventDetails = () => {
             className="bg-card/50 backdrop-blur-sm rounded-2xl p-8 border border-party-blue/20"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay:2 }}
+            transition={{ duration: 0.3, delay: 0.1 }}
             viewport={{ once: true }}
           >
             <div className="flex items-center mb-6">
@@ -332,7 +332,7 @@ const EventDetails = () => {
             className="bg-card/50 backdrop-blur-sm rounded-2xl p-8 border border-party-blue/20"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay:4 }}
+            transition={{ duration: 0.3, delay: 0.2 }}
             viewport={{ once: true }}
           >
             <div className="flex items-center mb-6">
@@ -402,7 +402,7 @@ const PartyDetails = () => {
           className="text-4xl md:text-5xl font-bold text-center mb-16 text-party-blue"
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
-          transition={{ delay:3, duration: 0.8 }}
+          transition={{ delay: 0.2, duration: 0.4 }}
         >
           Informasjon
         </motion.h2>
@@ -414,7 +414,7 @@ const PartyDetails = () => {
               className="bg-card/50 backdrop-blur-sm border border-party-blue/20 rounded-2xl p-8 text-center hover:shadow-card transition-all duration-300"
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : {}}
-              transition={{ delay: 0.5 + index * 0.15, duration: 0.6 }}
+              transition={{ delay: 0.1 + index * 0.05, duration: 0.3 }}
               whileHover={{ scale: 1.05, rotateY: 5 }}
             >
               <detail.icon className="w-12 h-12 mx-auto mb-4 text-party-blue animate-float" />
@@ -437,7 +437,7 @@ const Footer = () => {
       <motion.div
         initial={{ opacity: 0 }}
         animate={isInView ? { opacity: 1 } : {}}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 0.4 }}
       >
         <p className="text-lg text-muted-foreground mb-6">
           Vi gleder oss til å se deg der! 🎉
