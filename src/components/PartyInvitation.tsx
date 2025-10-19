@@ -57,6 +57,9 @@ const PartyInvitation = () => {
       {/* Image Gallery Section */}
       <ImageGallery />
       
+      {/* Nominees Section */}
+      <NomineesSection />
+      
       {/* Footer */}
       <Footer />
     </div>
@@ -137,6 +140,132 @@ const ImageGallery = () => {
           <p className="text-muted-foreground">
             Gleder dere til å lage nye minner i år? 🎊
           </p>
+        </motion.div>
+      </div>
+    </motion.section>
+  );
+};
+
+// Nominees Section Component
+const NomineesSection = () => {
+  const nomineesRef = useRef(null);
+  const isInView = useInView(nomineesRef, { once: true });
+
+  const awardCategories = [
+    {
+      title: "Årets Nykommer",
+      nominees: ["Omid Mahmudiyan", "Amanda Pedersen", "Artor Domi"]
+    },
+    {
+      title: "Årets Homeworker", 
+      nominees: ["Heidi Murtnes", "Ellen Gunneng", "Lars Hermansen"]
+    },
+    {
+      title: "Årets Gledesspreder",
+      nominees: ["Espen Nipe", "Sarmad Hussein", "Markus Kristiansen"]
+    },
+    {
+      title: "Årets Kvalitet",
+      nominees: ["Levi Alexander Dischler Sporsheim", "Wilhelm Justin Godtfeld", "Julie Hansen Edvardsen"]
+    },
+    {
+      title: "Årets Selger",
+      nominees: ["Jasmin Mohammed", "Mahamed Sheekh Doon", "Måns Nystrøm"]
+    },
+    {
+      title: "Årets Team",
+      nominees: ["Antichurn", "Hunter 3", "Bedrift Retention"]
+    },
+    {
+      title: "Årets Hederspris",
+      nominees: ["?????????"]
+    },
+    {
+      title: "Årets Transcom'er",
+      nominees: ["?????????"]
+    }
+  ];
+
+  return (
+    <motion.section 
+      ref={nomineesRef}
+      className="py-20 px-4"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 0.8 }}
+      viewport={{ once: true }}
+    >
+      <div className="max-w-6xl mx-auto">
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-party-blue to-party-blue-light mb-6">
+            Årets Nominerte 🏆
+          </h2>
+          <p className="text-xl text-muted-foreground">
+            Gratulerer til alle nominerte i alle priser! Vinnerne avsløres under festen.
+          </p>
+        </motion.div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {awardCategories.map((category, categoryIndex) => (
+            <motion.div
+              key={category.title}
+              className="bg-card/50 backdrop-blur-sm rounded-2xl p-8 border border-party-blue/20 hover:shadow-card transition-all duration-300"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: categoryIndex * 0.1, duration: 0.8 }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.02 }}
+            >
+              <div className="text-center">
+                <h3 className="text-2xl font-bold text-party-blue mb-6">
+                  {category.title}
+                </h3>
+                
+                <div className="space-y-3">
+                  {category.nominees.map((nominee, nomineeIndex) => (
+                    <motion.div
+                      key={nominee}
+                      className="bg-background/30 rounded-lg p-4 border border-party-blue/10"
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ delay: (categoryIndex * 0.1) + (nomineeIndex * 0.1), duration: 0.6 }}
+                      viewport={{ once: true }}
+                    >
+                      <div className="flex items-center justify-center">
+                        <Star className="w-5 h-5 text-party-blue mr-3 flex-shrink-0" />
+                        <span className="text-foreground font-medium text-lg">
+                          {nominee}
+                        </span>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        <motion.div
+          className="text-center mt-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          viewport={{ once: true }}
+        >
+          <div className="bg-gradient-to-r from-amber-500/10 to-yellow-500/10 backdrop-blur-sm rounded-2xl p-8 border border-amber-500/30">
+            <h3 className="text-2xl font-bold text-foreground mb-4">
+              🎉 Lykke til alle nominerte! 🎉
+            </h3>
+            <p className="text-muted-foreground text-lg">
+              Vinnerne avsløres under Transcom Awards 2025
+            </p>
+          </div>
         </motion.div>
       </div>
     </motion.section>
