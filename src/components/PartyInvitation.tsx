@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Calendar, Clock, MapPin, Users, Star, Sparkles, Utensils, Music } from "lucide-react";
+import InstallPWA from "@/components/InstallPWA";
 
 // Updated: Project synced to GitHub $(date)
 
@@ -62,6 +63,9 @@ const PartyInvitation = () => {
       
       {/* Footer */}
       <Footer />
+      
+      {/* PWA Install Button */}
+      <InstallPWA />
     </div>
   );
 };
