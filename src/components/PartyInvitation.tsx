@@ -403,12 +403,12 @@ const PartyDetails = () => {
         transition={{ duration: 1 }}
       >
         <motion.h2
-          className="text-4xl md:text-5xl font-bold text-center mb-16 text-party-blue"
+          className="text-4xl md:text-5xl font-bold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-party-blue via-purple-500 to-pink-500"
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ delay: 0.2, duration: 0.4 }}
         >
-          Informasjon
+          Transcom Awards 2025
         </motion.h2>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
