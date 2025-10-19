@@ -24,8 +24,11 @@ const NavigationMenu = () => {
     <>
       {/* Hamburger Button - Sticky */}
       <motion.button
-        onClick={() => setIsOpen(!isOpen)}
-        className="fixed top-6 right-6 z-50 w-14 h-14 bg-gradient-to-r from-party-blue to-party-blue-light rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-transform"
+        onClick={() => {
+          console.log('Hamburger clicked!', !isOpen);
+          setIsOpen(!isOpen);
+        }}
+        className="fixed top-6 right-6 z-[100] w-14 h-14 bg-gradient-to-r from-party-blue to-party-blue-light rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-transform"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
       >
@@ -46,7 +49,7 @@ const NavigationMenu = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40"
+              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[90]"
               onClick={() => setIsOpen(false)}
             />
 
@@ -56,7 +59,7 @@ const NavigationMenu = () => {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: -20 }}
               transition={{ duration: 0.3, ease: 'easeOut' }}
-              className="fixed top-24 right-6 z-50 w-80 max-w-[calc(100vw-3rem)] bg-gradient-to-br from-gray-900 to-black rounded-2xl shadow-2xl border border-party-blue/30 overflow-hidden"
+              className="fixed top-24 right-6 z-[95] w-80 max-w-[calc(100vw-3rem)] bg-gradient-to-br from-gray-900 to-black rounded-2xl shadow-2xl border border-party-blue/30 overflow-hidden"
             >
               {/* Header */}
               <div className="bg-gradient-to-r from-party-blue to-party-blue-light p-6">
