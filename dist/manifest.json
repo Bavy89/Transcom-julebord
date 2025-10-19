@@ -1,7 +1,7 @@
 {
-  "name": "Transcom Julebord",
-  "short_name": "Julebord",
-  "description": "Transcom Julebord Application",
+  "name": "Transcom Awards 2025",
+  "short_name": "Transcom Awards",
+  "description": "Velkommen til Transcom Awards 2025 - Gi oss beskjed om du kommer!",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
