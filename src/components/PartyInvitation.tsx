@@ -110,7 +110,7 @@ const ImageGallery = () => {
               className="relative group cursor-pointer"
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
               viewport={{ once: true }}
               whileHover={{ scale: 1.05 }}
             >
@@ -218,7 +218,7 @@ const NomineesSection = () => {
               className="bg-card/50 backdrop-blur-sm rounded-2xl p-8 border border-party-blue/20 hover:shadow-card transition-all duration-300"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              transition={{ delay: categoryIndex * 0.1, duration: 0.8 }}
+              transition={{ delay: categoryIndex * 0.15, duration: 0.6 }}
               viewport={{ once: true }}
               whileHover={{ scale: 1.02 }}
             >
@@ -234,7 +234,7 @@ const NomineesSection = () => {
                       className="bg-background/30 rounded-lg p-4 border border-party-blue/10"
                       initial={{ opacity: 0 }}
                       whileInView={{ opacity: 1 }}
-                      transition={{ delay: (categoryIndex * 0.1) + (nomineeIndex * 0.1), duration: 0.6 }}
+                      transition={{ delay: (categoryIndex * 0.15) + (nomineeIndex * 0.1), duration: 0.4 }}
                       viewport={{ once: true }}
                     >
                       <div className="flex items-center justify-center">
@@ -414,7 +414,7 @@ const PartyDetails = () => {
               className="bg-card/50 backdrop-blur-sm border border-party-blue/20 rounded-2xl p-8 text-center hover:shadow-card transition-all duration-300"
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : {}}
-              transition={{ delay:5 + index * 0.2, duration: 0.8 }}
+              transition={{ delay: 0.5 + index * 0.15, duration: 0.6 }}
               whileHover={{ scale: 1.05, rotateY: 5 }}
             >
               <detail.icon className="w-12 h-12 mx-auto mb-4 text-party-blue animate-float" />
