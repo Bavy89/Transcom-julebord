@@ -147,7 +147,7 @@ const ImageGallery = () => {
           viewport={{ once: true }}
         >
           <p className="text-muted-foreground">
-            Gleder dere til å lage nye minner i år? 🎊
+            Gjør dere klare til å lage nye minner i år! 🎊
           </p>
         </motion.div>
       </div>
