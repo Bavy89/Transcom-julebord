@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Menu, X, Calendar, Users, Trophy, Image, Info } from 'lucide-react';
+import { Menu, X, Calendar, Users, Trophy, Image, Info, Utensils } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const NavigationMenu = () => {
@@ -8,6 +8,7 @@ const NavigationMenu = () => {
   const menuItems = [
     { id: 'party-details', label: 'Informasjon', icon: Info },
     { id: 'event-details', label: 'Eventdetaljer', icon: Calendar },
+    { id: 'menu', label: 'Meny', icon: Utensils },
     { id: 'nominees', label: 'Årets Nominerte', icon: Trophy },
     { id: 'gallery', label: 'Bildegalleri', icon: Image },
   ];

@@ -2,11 +2,53 @@ import { motion, useScroll, useTransform, useInView } from "framer-motion";
 // Updated: Project synced to GitHub $(date)
 import { useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { Calendar, Clock, MapPin, Users, Star, Sparkles, Utensils, Music } from "lucide-react";
+import { Calendar, Clock, MapPin, Users, Star, Sparkles, Utensils, Music, Wine, Fish, Beef, IceCream } from "lucide-react";
 import InstallPWA from "@/components/InstallPWA";
 import NavigationMenu from "@/components/NavigationMenu";
 
 // Updated: Project synced to GitHub $(date)
+
+/**
+ * Grensesnitt for å representere en enkelt rett på menyen.
+ */
+interface MenuItem {
+    course: 'Forrett' | 'Hovedrett' | 'Dessert'; // Type for retten (starter, main, dessert)
+    title: string;                               // Den lange beskrivelsen av retten
+    allergens: string[];                         // Liste over allergenkoder (Inneholder:)
+    wineRecommendation: string;                  // Anbefalt vin (Vinanbefaling:)
+}
+
+/**
+ * Metadata for menyen.
+ */
+const menuMetadata = {
+    menuName: "MENY",
+    restaurant: "Scandic"
+};
+
+/**
+ * Meny 1, strukturert i TypeScript.
+ */
+const menu1: MenuItem[] = [
+    {
+        course: 'Forrett',
+        title: "Chilistekte argentinske villreker med guacamole, salat med koriander, ananas, chipotlemayones og skivet reddik",
+        allergens: ["S", "E", "Sn", "M"],
+        wineRecommendation: "Dr. Loosen Red Slate Riesling eller Les Pierres Dorées Sauvignon Blanc Organic"
+    },
+    {
+        course: 'Hovedrett',
+        title: "Helstekt indrefilet av norsk storfe med bakt sellerikrem, lun brokkolinisalat med syltet rødløk og ristede nøtter. Stekte småpoteter og rødvinssaus",
+        allergens: ["Sl", "M", "N (hasselnøtt)", "Su"],
+        wineRecommendation: "Arc Du Rhone Rouge eller Fontanafredda Ebbio Langhe Nebbiolo"
+    },
+    {
+        course: 'Dessert',
+        title: "Pasjonsfruktmousse på kokosbunn med pasjonsfruktgelé og kokossorbet",
+        allergens: ["M", "E"],
+        wineRecommendation: "Royal Tokaji Late Harvest"
+    }
+];
 
 
 const PartyInvitation = () => {
@@ -56,6 +98,9 @@ const PartyInvitation = () => {
       {/* Event Details Section */}
       <EventDetails />
       
+      {/* Menu Section */}
+      <MenuSection />
+      
       {/* Nominees Section */}
       <NomineesSection />
       
@@ -74,6 +119,126 @@ const PartyInvitation = () => {
   );
 };
 
+
+// Menu Section Component
+const MenuSection = () => {
+  const menuRef = useRef(null);
+  const isInView = useInView(menuRef, { once: true });
+
+  const getCourseIcon = (course: string) => {
+    switch (course) {
+      case 'Forrett':
+        return Fish;
+      case 'Hovedrett':
+        return Beef;
+      case 'Dessert':
+        return IceCream;
+      default:
+        return Utensils;
+    }
+  };
+
+  return (
+    <motion.section 
+      id="menu"
+      ref={menuRef}
+      className="py-20 px-4"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 0.4 }}
+      viewport={{ once: true }}
+    >
+      <div className="max-w-4xl mx-auto">
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.4 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-party-blue to-party-blue-light mb-6">
+            Meny 🍽️
+          </h2>
+          <p className="text-xl text-muted-foreground mb-2">
+            {menuMetadata.menuName} - {menuMetadata.restaurant}
+          </p>
+          <p className="text-lg text-muted-foreground">
+            3-retters middag med vinanbefaling
+          </p>
+        </motion.div>
+
+        <div className="space-y-8">
+          {menu1.map((item, index) => {
+            const CourseIcon = getCourseIcon(item.course);
+            
+            return (
+              <motion.div
+                key={index}
+                className="bg-card/50 backdrop-blur-sm rounded-2xl p-8 border border-party-blue/20 hover:shadow-card transition-all duration-300"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ delay: index * 0.1, duration: 0.3 }}
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.02 }}
+              >
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-party-blue to-party-blue-light rounded-xl flex items-center justify-center">
+                    <CourseIcon className="w-6 h-6 text-white" />
+                  </div>
+                  <div className="flex-grow">
+                    <h3 className="text-2xl font-bold text-party-blue mb-3">
+                      {item.course}
+                    </h3>
+                    <p className="text-foreground text-lg leading-relaxed mb-4">
+                      {item.title}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="pl-16 space-y-3">
+                  {/* Allergener */}
+                  <div className="flex items-start gap-3">
+                    <span className="text-muted-foreground font-medium min-w-[110px]">
+                      Inneholder:
+                    </span>
+                    <span className="text-foreground">
+                      {item.allergens.join(', ')}
+                    </span>
+                  </div>
+
+                  {/* Vinanbefaling */}
+                  <div className="flex items-start gap-3">
+                    <Wine className="w-5 h-5 text-party-blue mt-0.5 flex-shrink-0" />
+                    <div className="flex-grow">
+                      <span className="text-muted-foreground font-medium">
+                        Vinanbefaling:{' '}
+                      </span>
+                      <span className="text-foreground">
+                        {item.wineRecommendation}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
+
+        <motion.div
+          className="mt-12 p-6 bg-card/30 backdrop-blur-sm rounded-xl border border-party-blue/20"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.3, delay: 0.4 }}
+          viewport={{ once: true }}
+        >
+          <p className="text-muted-foreground text-center">
+            <strong className="text-foreground">Allergenkoder:</strong> S = Skalldyr, E = Egg, Sn = Sennep, M = Melk, Sl = Selleri, N = Nøtter, Su = Sulfitt
+          </p>
+        </motion.div>
+      </div>
+    </motion.section>
+  );
+};
 
 // Image Gallery Component
 const ImageGallery = () => {
