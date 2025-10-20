@@ -1,24 +1,58 @@
-## Midnight Reveal Invite
+# 🎉 Transcom Awards 2025
 
-En enkel invitasjonsside bygget med Vite, React, TypeScript, Tailwind og shadcn-ui.
+En moderne invitasjonsside for Transcom Awards 2025 med animasjoner, meny og bildegalleri.
 
-### Kom i gang
+## ✨ Funksjoner
 
-```sh
-npm i
+- **Eventdetaljer** - Dato, tid, lokasjon og dress code
+- **Meny** - 3-retters middag med vinanbefaling og allergener
+- **Nominerte** - Oversikt over alle priskategorier og nominerte
+- **Bildegalleri** - Minner fra tidligere feiringer
+- **PWA-støtte** - Kan installeres som app på mobil
+- **Responsivt design** - Fungerer på alle enheter
+- **Smooth animasjoner** - Framer Motion for flytende overganger
+
+## 🚀 Kom i gang
+
+```bash
+# Installer avhengigheter
+npm install
+
+# Start utviklingsserver
 npm run dev
-```
 
-Åpne nettleseren på adressen som Vite skriver ut (typisk `http://localhost:5173`).
-
-### Bygg for produksjon
-
-```sh
+# Bygg for produksjon
 npm run build
 ```
 
-### Deploy
+Åpne [http://localhost:5173](http://localhost:5173) i nettleseren.
 
-Push til `main`-branchen på GitHub. Siden kan enkelt hostes på Vercel, Netlify eller GitHub Pages.
-# Updated Fri Sep  5 14:18:06 CEST 2025
+## 🛠️ Teknologi
 
+- **React 18** + **TypeScript**
+- **Vite** - Rask utviklingsserver
+- **Tailwind CSS** - Utility-first CSS
+- **Framer Motion** - Animasjoner
+- **Lucide React** - Ikoner
+- **shadcn/ui** - UI-komponenter
+
+## 📱 PWA
+
+Appen kan installeres som en Progressive Web App (PWA) på mobile enheter for en app-lignende opplevelse.
+
+## 🎨 Design
+
+Moderne design med:
+- Gradient-bakgrunner
+- Glassmorphism-effekter
+- Smooth scroll-navigasjon
+- Hover-animasjoner
+- Responsive layout
+
+## 📦 Deploy
+
+Push til `main`-branchen for automatisk deploy på Vercel, Netlify eller GitHub Pages.
+
+---
+
+**Laget med ❤️ for Transcom Awards 2025**
