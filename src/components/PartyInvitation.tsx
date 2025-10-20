@@ -387,7 +387,7 @@ const PartyDetails = () => {
     {
       icon: Clock,
       title: "Tid",
-      info: "18:30 - 23:00"
+      info: "1830 - festen varer til du er på do og spyr men kan være der litt til og kjøpe kebab på nellys..."
     },
     {
       icon: MapPin,
