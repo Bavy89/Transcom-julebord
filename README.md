@@ -56,3 +56,5 @@ Push til `main`-branchen for automatisk deploy på Vercel, Netlify eller GitHub 
 ---
 
 **Laget med ❤️ for Transcom Awards 2025**
+
+<!-- Deploy trigger: $(date) -->
